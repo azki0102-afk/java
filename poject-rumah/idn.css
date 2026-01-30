@@ -1,0 +1,125 @@
+.text {
+  /* Menerapkan animasi 'fadeInFromBottom': durasi 1 detik, hanya sekali jalan */
+  animation: fadeInFromBottom 1s ease-out forwards;
+}
+
+/* Opsional: Tambahkan animasi ke H3 juga */
+.text-2 h3 {
+  /* Delay 0.5s agar muncul setelah H1 */
+  animation: fadeInFromBottom 1s ease-out forwards;
+  animation-delay: 0.5s;
+  opacity: 0; /* Sembunyikan sebelum animasi mulai */
+}
+
+.text{
+  text-align: center;
+}
+.img-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes bounceOnce {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(0px); /* Mendarat di tengah */
+  }
+  75% {
+    transform: translateY(-10px); /* Memantul sedikit */
+  }
+  100% {
+    transform: translateY(0px); /* Diam di posisi akhir */
+    opacity: 1;
+  }
+}
+
+/* Terapkan animasi pada gambar Garuda */
+#garuda-img {
+  /* Atur properti animasi */
+  animation-name: bounceOnce; /* Nama animasi */
+  animation-duration: 1.5s; /* Durasi 1.5 detik */
+  animation-timing-function: ease-out; /* Efek halus */
+  animation-iteration-count: 1; /* HANYA BERJALAN SEKALI */
+  animation-fill-mode: forwards; /* Tetap di posisi akhir (100%) */
+  opacity: 0; /* Sembunyikan elemen sebelum animasi mulai */
+}
+
+.animate-start {
+  animation-name: bounceOnce;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+/* Styling untuk tombol */
+#myBtn {
+    /* Sembunyikan tombol secara default */
+    display: none; 
+    position: fixed; /* Posisikan tombol relatif terhadap jendela browser */
+    bottom: 20px; /* Jarak dari bawah */
+    right: 30px; /* Jarak dari kanan */
+    z-index: 99; /* Pastikan tombol berada di atas konten lain */
+    border: none; /* Hilangkan border */
+    outline: none; /* Hilangkan outline saat diklik */
+    background-color: #007bff; /* Warna latar belakang */
+    color: white; /* Warna teks */
+    cursor: pointer; /* Ubah kursor menjadi pointer saat diarahkan */
+    padding: 15px; /* Padding */
+    border-radius: 10px; /* Sudut membulat */
+    font-size: 18px; /* Ukuran font */
+    /* Tambahkan animasi transisi untuk kemunculan yang halus */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Ketika class 'show' ditambahkan oleh JavaScript */
+#myBtn.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Animasi muncul dari bawah */
+}
+
+/* Efek hover */
+#myBtn:hover {
+    background-color: #0056b3;
+}
+
+#text-container p {
+  direction: rtl; /* Arah teks dari kanan ke kiri */
+  font-size: 20px;
+  white-space: nowrap; /* Agar teks tidak pindah baris */
+  animation: move-left 5s forwards, move-left-again 5s forwards;
+}
+
+@keyframes move-left {
+  from {
+    transform: translateX(100%); /* Teks dimulai dari sisi kanan */
+  }
+  to {
+    transform: translateX(-100%); /* Teks bergerak ke sisi kiri */
+  }
+}
+
+@keyframes move-left-again {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(-100%); /* Text tetap bergerak ke kiri */
+  }
+}

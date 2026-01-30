@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> PARADOX DRIFT</title>
+
+    <!-- FAVICON -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="./ChatGPT_Image_Jan_29_2026_09_54_54_AM.png"
+    />
+
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <!-- GOOGLE FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Orbitron", sans-serif;
+      }
+
+      body {
+        background-color: #0b0b0b;
+        color: #fff;
+        padding-bottom: 80px;
+      }
+
+      a { text-decoration: none; }
+
+      /* ===== NAVBAR ===== */
+      nav {
+        background: #111;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo-img {
+        width: 50px;
+        height: auto;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        color: white;
+        transition: 0.3s;
+        font-weight: bold;
+      }
+
+      .nav-links a:hover {
+        color: #ff2e2e;
+        text-shadow: 0 0 8px #ff2e2e, 0 0 16px #ff2e2e;
+      }
+
+      /* ===== HERO ===== */
+      .content-section {
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.3em;
+        margin-bottom: 15px;
+        color: #ff2e2e;
+      }
+
+      .hero p {
+        max-width: 700px;
+        margin: auto;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      /* ===== MARQUEE ===== */
+      .marquee-container {
+        background: #ff2e2e;
+        overflow: hidden;
+        padding: 10px 0;
+        margin-top: 40px;
+      }
+
+      .teks-gerak {
+        white-space: nowrap;
+        display: inline-block;
+        animation: marquee 15s linear infinite;
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #000;
+      }
+
+      @keyframes marquee {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+      }
+
+      /* ===== JUDUL SKETSA ===== */
+      .text {
+        text-align: center;
+        margin: 70px 0 30px;
+        animation: fadeUp 1.2s ease forwards;
+      }
+
+      .text h1 {
+        color: #ff2e2e;
+        font-size: 1.9em;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .text h1::after {
+        content: "";
+        width: 130px;
+        height: 3px;
+        background: #ff2e2e;
+        display: block;
+        margin: 14px auto 0;
+        border-radius: 5px;
+        opacity: 0.8;
+      }
+
+      /* ===== GALERI ===== */
+      .drift-gallery {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(60px);
+        transition: 0.8s ease;
+      }
+
+      .drift-gallery.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .drift-gallery img {
+        width: 220px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .drift-gallery img:hover {
+        transform: scale(1.1) rotate(-2deg);
+        box-shadow: 0 0 20px #ff2e2e, 0 0 40px #ff2e2e;
+      }
+
+      /* ===== TIMELINE ===== */
+      .timeline {
+        margin: 70px 0;
+      }
+
+      .timeline-container {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .timeline-item {
+        background: #111;
+        padding: 20px;
+        border: 2px solid #ff2e2e;
+        border-radius: 10px;
+        flex: 1 1 200px;
+        text-align: center;
+        transition: transform 0.4s ease;
+      }
+
+      .timeline-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 46, 46, 0.4);
+      }
+
+      /* ===== SPECS ===== */
+      .specs {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .spec-card {
+        background: #111;
+        border: 2px solid #ff2e2e;
+        padding: 20px;
+        border-radius: 10px;
+        flex: 1 1 180px;
+        text-align: center;
+      }
+
+      .spec-card h3 {
+        color: #ff2e2e;
+        margin-bottom: 10px;
+      }
+
+      /* ===== VIDEO ===== */
+      .drift-video video {
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(255, 46, 46, 0.5);
+        max-width: 90%;
+        margin-top: 20px;
+      }
+
+      /* ===== JOIN CREW ===== */
+      .join-crew {
+        margin: 70px 0;
+      }
+
+      .btn-join {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #ff2e2e;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+
+      .btn-join:hover {
+        box-shadow: 0 0 20px #ff2e2e, 0 0 40px #ff2e2e;
+      }
+
+      /* ===== ANIMASI ===== */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <div class="nav-left">
+        <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" alt="Logo" class="logo-img" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Cars</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero content-section">
+      <h1>PROJECT PARADOX DRIFT</h1>
+      <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" width="380" />
+      <p>
+        Project Paradox Drift adalah konsep modifikasi ekstrem yang menggabungkan sport car dengan gaya drift agresif, widebody, aerodinamika brutal, dan karakter motorsport underground.
+      </p>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-container">
+      <span class="teks-gerak">
+        PROJECT PARADOX DRIFT — EXTREME DRIFT • CUSTOM SKETCH • STREET CULTURE
+      </span>
+    </div>
+
+    <!-- GALERI -->
+    <div class="text"><h1>Sketsa Mobil yg ingin di Custom Paradox Drift</h1></div>
+    <div class="drift-gallery content-section" id="driftSection">
+      <img src="./ChatGPT Image Jan 29, 2026, 09_57_01 AM.png" />
+      <img src="./ChatGPT Image Jan 29, 2026, 10_42_05 AM.png" />
+      <img src="./ChatGPT Image Jan 29, 2026, 10_58_38 AM.png" />
+      <img src="./car4.jpg" />
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline content-section">
+      <h1>Journey of Paradox Drift</h1>
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <h3>Idea</h3>
+          <p>Mengumpulkan inspirasi dari street drift dan motorsport.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Sketch</h3>
+          <p>Membuat desain agresif widebody dan aero kit ekstrim.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Build</h3>
+          <p>Pengerjaan body kit, engine upgrade, dan tuning suspensi.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Reveal</h3>
+          <p>Final project siap tampil di track dan street showcase.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECS -->
+    <div class="specs content-section">
+      <div class="spec-card">
+        <h3>Engine</h3>
+        <p>2.0L Turbo Inline-4</p>
+      </div>
+      <div class="spec-card">
+        <h3>Horsepower</h3>
+        <p>520 HP</p>
+      </div>
+      <div class="spec-card">
+        <h3>Torque</h3>
+        <p>480 Nm</p>
+      </div>
+      <div class="spec-card">
+        <h3>Body / Aero</h3>
+        <p>Widebody Drift Kit + Aero Wing</p>
+      </div>
+    </div>
+
+
+
+    <!-- JS -->
+    <script>
+      function revealDrift() {
+        const drift = document.getElementById("driftSection");
+        const rect = drift.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          drift.classList.add("is-visible");
+        }
+      }
+
+      window.addEventListener("scroll", revealDrift);
+      revealDrift();
+    </script>
+  </body>
+</html>
+
+

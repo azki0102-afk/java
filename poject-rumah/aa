@@ -1,0 +1,56 @@
+<header>
+  <div class="d">
+    <nav class="navbar">
+      <div class="logo">
+        <img
+          src="./85092457dbd577039bf9f03a553c6e56-removebg-preview.png"
+          alt=""
+          width="40px"
+        />
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#beranda">home</a></li>
+        <li><a href="#layanan">about</a></li>
+        <li>
+          <a
+            href="#http://127.0.0.1:3000/poject-rumah/ind.html?serverWindowId=f1d1f157-78e0-45d0-939f-9b08c9b1e1c9"
+            >next</a
+          >
+        </li>
+        <li><a href="#kontak">build</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="ss">
+  <h1>welcome to indonesia</h1>
+</div>
+<div class="w">
+  <h2>"di mana alam menyuguhkan pesona yang memukau"</h2>
+</div>
+<div class="gg">
+  <img
+    src="./579c038a2dc9f0090787a27871d334fe-removebg-preview.png"
+    alt=""
+    width="400px"
+  />
+</div>
+<div class="semua-div">
+  <div class="img">
+    \
+    <p>
+      "nah kalau kamu ingin lihat apa saja yg ada dialam indonesia yg sering
+      jadi pusat perhatian turis asing yuk kita liat, Indonesia itu juara banget
+      alamnya. Lewat web ini, kita mau ajak kamu buat lihat, ngerasain, dan
+      jatuh cinta lagi sama keindahan negeri sendiri. Nggak cuma scroll foto,
+      tapi beneran explore. tekan tombol next"
+    </p>
+
+    <img src="./0246f7c0f8feb49d74e77e601e1e171f.jpg" alt="" width="300px" />
+
+    <img src="./a1d19ef93aa9cfec3615b5932173dbc6.jpg" alt="" width="300px" />
+    <img src="./c0e5a7648ac9fdb3b2e850533660424f.jpg" alt="" width="300px" />
+    <p>"pertama tama kita lihat keindahan yg ada di bali yuk kita lihat"</p>
+  </div>
+</div>

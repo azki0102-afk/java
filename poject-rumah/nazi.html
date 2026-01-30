@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sejarah Nazi Jerman dan world war2</title>
+    <link rel="icon" type="image/png" href="./inza.jpg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      ul {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma;
+      }
+      body {
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* LOADING */
+      #loadingScreen {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 3000;
+        flex-direction: column;
+      }
+      #loadingScreen .loader {
+        width: 160px;
+        height: 160px;
+        border: 8px solid #ff0000;
+        border-top: 8px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      #loadingScreen .loader-text {
+        font-size: 22px;
+        font-weight: bold;
+        color: #ff0000;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* MODAL */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+      }
+      .modal-content {
+        background: #111;
+        padding: 40px;
+        border: 2px solid #ff0000;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 450px;
+      }
+      .btn-masuk {
+        background: #ff0000;
+        color: #fff;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      /* NAVBAR */
+      nav {
+        background: #111;
+        padding: 15px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .logo {
+        font-size: 2em;
+        color: #ff0000;
+      }
+      .nav-menu {
+        list-style: none; 
+        display: flex;
+        gap: 25px;
+      }
+      .nav-menu a {
+        text-decoration: none;
+        color: #ccc;
+      }
+      .menu-toggle {
+        display: none;
+        font-size: 1.8em;
+        cursor: pointer;
+        color: #ff0000;
+      }
+
+      /* LANGUAGE (DI NAVBAR) */
+      .lang-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .lang-dropdown button {
+        background: transparent;
+        border: 1px solid #ff0000;
+        color: #ff0000;
+        padding: 6px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.8em;
+      }
+      .lang-dropdown-content {
+        display: none;
+        position: absolute;
+        background: #111;
+        border: 1px solid #ff0000;
+        border-radius: 10px;
+        margin-top: 8px;
+        right: 0;
+        overflow: hidden;
+      }
+      .lang-dropdown-content button {
+        display: block;
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: #ff0000;
+        padding: 10px 14px;
+        text-align: left;
+        cursor: pointer;
+      }
+      .lang-dropdown-content button:hover {
+        background: #ff0000;
+        color: #fff;
+      }
+      .lang-dropdown.show .lang-dropdown-content {
+        display: block;
+      }
+
+      /* MOBILE */
+      @media (max-width: 768px) {
+        nav {
+          padding: 15px 20px;
+        }
+        .nav-menu {
+          position: absolute;
+          top: 70px;
+          right: 20px;
+          background: #111;
+          flex-direction: column;
+          width: 180px;
+          padding: 15px;
+          border-radius: 12px;
+          display: none;
+        }
+        .nav-menu.show {
+          display: flex;
+        }
+        .menu-toggle {
+          display: block;
+        }
+      }
+
+      /* STATIS */
+      .statis-container {
+        background: #111;
+        padding: 15px;
+        text-align: center;
+        border-top: 1px solid #300;
+        border-bottom: 1px solid #300;
+      }
+      .teks-diam {
+        color: #ff0000;
+        letter-spacing: 2px;
+        font-weight: 600;
+      }
+
+      /* LOGO TENGAH + EFEK MERAH */
+      .loi {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+      }
+      .loi img {
+        width: 220px;
+        animation: redPulse 2.5s infinite alternate;
+        filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8))
+          drop-shadow(0 0 30px rgba(255, 0, 0, 0.6))
+          drop-shadow(0 0 60px rgba(255, 0, 0, 0.4));
+      }
+      @keyframes redPulse {
+        from {
+          transform: scale(1);
+          filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6))
+            drop-shadow(0 0 25px rgba(255, 0, 0, 0.5));
+        }
+        to {
+          transform: scale(1.08);
+          filter: drop-shadow(0 0 25px rgba(255, 0, 0, 1))
+            drop-shadow(0 0 60px rgba(255, 0, 0, 0.9));
+        }
+      }
+
+      /* MARQUEE */
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        border-top: 2px solid #ff0000;
+        border-bottom: 2px solid #ff0000;
+      }
+      .teks-destinasi-hitam {
+        white-space: nowrap;
+        padding-left: 100%;
+        animation: marquee 22s linear infinite;
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #ff0000;
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* CONTENT */
+      .content {
+        padding: 60px 20px;
+        max-width: 900px;
+        margin: auto;
+        line-height: 1.8;
+      }
+      .content h2 {
+        color: #ff0000;
+        margin-top: 40px;
+      }
+      .content ul {
+        margin-left: 20px;
+      }
+
+      /* TIMELINE */
+      .timeline {
+        margin-top: 30px;
+        border-left: 2px solid #ff0000;
+        padding-left: 20px;
+      }
+      .timeline-item {
+        margin-bottom: 25px;
+      }
+      .timeline-item h4 {
+        color: #ff0000;
+        font-size: 1.1em;
+      }
+      .timeline-item p {
+        color: #ccc;
+        margin-top: 6px;
+      }
+
+      /* QUIZ */
+      .quiz-container {
+        margin-top: 50px;
+        border: 1px solid #300;
+        padding: 20px;
+        border-radius: 12px;
+      }
+      .quiz-container h3 {
+        color: #ff0000;
+        margin-bottom: 15px;
+      }
+      .quiz-container button {
+        background: transparent;
+        color: #ff0000;
+        border: 1px solid #ff0000;
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 10px;
+      }
+      .quiz-container .result {
+        margin-top: 15px;
+        color: #ccc;
+      }
+
+      /* REVEAL */
+      .reveal-container {
+        padding: 80px 20px;
+        text-align: center;
+      }
+      .reveal-text {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 1.5s;
+        font-size: 1.4em;
+        font-style: italic;
+        color: #ff4444;
+      }
+      .reveal-text.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .penutup {
+        text-align: center;
+        padding: 40px;
+        color: #777;
+        border-top: 1px solid #300;
+      }
+
+      /* IMAGE GALLERY */
+      .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .image-item {
+        background: #111;
+        border: 1px solid #ff0000;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        max-width: 250px;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      }
+      .image-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+      .image-item h4 {
+        color: #ff0000;
+        margin-bottom: 8px;
+      }
+      .image-item p {
+        color: #ccc;
+        font-size: 0.9em;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- LOADING SCREEN -->
+    <div id="loadingScreen">
+      <div class="loader"></div>
+      <div class="loader-text" id="loadingText">0%</div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="welcomeModal">
+      <div class="modal-content">
+        <h2 data-key="welcome">Selamat Datang</h2>
+        <p data-key="welcome_desc">Website edukasi sejarah</p>
+        <button class="btn-masuk" onclick="closeModal()" data-key="start">
+          Masuk
+        </button>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+      <div class="logo"><i class="fa-solid fa-landmark"></i></div>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#" data-key="nav_home">Home</a></li>
+        <li><a href="#" data-key="nav_history">History</a></li>
+        <li><a href="#" data-key="nav_education">Education</a></li>
+      </ul>
+
+      <div style="display: flex; gap: 15px; align-items: center">
+        <!-- LANG DROPDOWN DI NAVBAR -->
+        <div class="lang-dropdown" id="langDropdown">
+          <button onclick="toggleLang()">
+            Language <i class="fa-solid fa-caret-down"></i>
+          </button>
+          <div class="lang-dropdown-content">
+            <button onclick="setLang('id')">🇮🇩 Indonesia</button>
+            <button onclick="setLang('en')">🇬🇧 English</button>
+          </div>
+        </div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="statis-container">
+      <span class="teks-diam" data-key="tagline">
+        SEJARAH PERANG DUNIA II — NAZI JERMAN
+      </span>
+    </div>
+
+    <!-- LOGO -->
+    <div class="loi">
+      <img src="./logo_nzi-removebg-preview.png" alt="Historical Logo" />
+    </div>
+
+    <!-- HERO -->
+    <div style="text-align: center; padding: 40px">
+      <h3 style="color: #ff0000; letter-spacing: 3px" data-key="hero_sub">
+        SEJARAH PERANG DUNIA II
+      </h3>
+      <h1 style="font-weight: 300" data-key="hero_title">
+        Nazi Jerman dan Adolf Hitler
+      </h1>
+    </div>
+
+    <div class="marquee-container">
+      <div class="teks-destinasi-hitam" data-key="marquee">
+        scroll untuk mempelajari sejarah perang dunia II
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <h2 data-key="s1_title">Mengapa Perang Dunia II Dimulai?</h2>
+      <p data-key="s1_text">
+        Perang Dunia II dimulai tahun 1939 ketika Nazi Jerman menyerang
+        Polandia. Penyebab utamanya adalah ketidakpuasan terhadap Perjanjian
+        Versailles.
+      </p>
+
+      <h2 data-key="s2_title">Mengapa Adolf Hitler Membenci Orang Yahudi?</h2>
+      <p data-key="s2_text">
+        Kebencian Hitler berasal dari ideologi rasis dan antisemitisme. Orang
+        Yahudi dijadikan kambing hitam tanpa dasar fakta.
+      </p>
+
+      <h2 data-key="s3_title">Musuh-Musuh Nazi Jerman</h2>
+      <ul>
+        <li>Inggris dan Prancis</li>
+        <li>Uni Soviet</li>
+        <li>Amerika Serikat</li>
+        <li>Kelompok perlawanan Eropa</li>
+      </ul>
+
+      <h2 data-key="s4_title">Apa yang Dilakukan Nazi Selama Perang?</h2>
+      <ul>
+        <li>Invasi dan pendudukan negara Eropa</li>
+        <li>Propaganda besar-besaran</li>
+        <li>Pemerintahan otoriter</li>
+        <li>Pelanggaran berat kemanusiaan</li>
+      </ul>
+
+      <!-- ======= BAGIAN BARU: Timeline ======= -->
+      <h2 data-key="s12_title">Timeline Nazi Jerman (1919–1945)</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>1919 — Perjanjian Versailles</h4>
+          <p>Jerman dipaksa menerima hukuman berat pasca PD I.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>1920 — Partai Nazi Dibentuk</h4>
+          <p>Partai Nazi mulai berkembang dan menyebarkan ideologi nasionalis.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>1933 — Hitler Jadi Kanselir</h4>
+          <p>Nazi mulai menguasai pemerintahan dan membentuk rezim otoriter.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>1939 — Invasi Polandia</h4>
+          <p>Awal resmi Perang Dunia II.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>1941 — Holocaust & Ekspansi</h4>
+          <p>Kejahatan perang meningkat dan perang semakin luas.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>1945 — Kekalahan Nazi</h4>
+          <p>Hitler bunuh diri, Jerman menyerah, dan perang berakhir.</p>
+        </div>
+      </div>
+
+      <!-- ======= BAGIAN BARU: Gambar Bersejarah Perang Dunia II ======= -->
+      <h2 data-key="images_title">Gambar Bersejarah Perang Dunia II</h2>
+      <p data-key="images_intro">Berikut adalah beberapa gambar bersejarah terkait Nazi Jerman dan Perang Dunia II, beserta penjelasan singkatnya.</p>
+
+      <div class="image-gallery">
+        <div class="image-item">
+          <img src="./inza.jpg" alt="Logo Nazi" />
+          <h4>Logo Partai Nazi</h4>
+          <p>Logo swastika yang menjadi simbol Partai Nazi Jerman. Simbol ini mewakili ideologi rasis dan nasionalisme ekstrem yang dianut oleh Adolf Hitler dan pengikutnya.</p>
+        </div>
+        <div class="image-item">
+          <img src="./horten.jpg" alt="Pesawat Horten" />
+          <h4>Pesawat Horten Ho 229</h4>
+          <p>Pesawat tempur siluman pertama di dunia yang dikembangkan oleh Nazi Jerman selama Perang Dunia II. Pesawat ini dirancang oleh saudara Horten dan merupakan inovasi teknologi penerbangan yang maju pada zamannya.</p>
+        </div>
+        <div class="image-item">
+          <img src="./sdkfz.jpg" alt="Kendaraan Sd.Kfz" />
+          <h4>Kendaraan Sd.Kfz 251</h4>
+          <p>Kendaraan lapis baja semi-track yang digunakan oleh pasukan Nazi untuk transportasi pasukan dan senjata. Kendaraan ini sangat penting dalam operasi militer Jerman selama perang.</p>
+        </div>
+        <div class="image-item">
+          <img src="./id.jpg" alt="Adolf Hitler" />
+          <h4>Adolf Hitler</h4>
+          <p>Foto Adolf Hitler, pemimpin Nazi Jerman yang memulai Perang Dunia II. Ia dikenal karena pidato-pidatonya yang membangkitkan nasionalisme dan kebencian rasial.</p>
+        </div>
+      </div>
+
+      <!-- ======= BAGIAN BARU: Quiz ======= -->
+      <div class="quiz-container">
+        <h3 data-key="quiz_title">Quiz Singkat</h3>
+
+        <!-- Pertanyaan 1 -->
+        <p data-key="quiz_q1">1. Tahun berapa Nazi menyerang Polandia?</p>
+        <button onclick="answerQuiz(1, 1939)">1939</button>
+        <button onclick="answerQuiz(1, 1945)">1945</button>
+        <button onclick="answerQuiz(1, 1919)">1919</button>
+
+        <!-- Pertanyaan 2 -->
+        <p data-key="quiz_q2">2. Siapa pemimpin Nazi Jerman?</p>
+        <button onclick="answerQuiz(2, 'hitler')">Hitler</button>
+        <button onclick="answerQuiz(2, 'stalin')">Stalin</button>
+        <button onclick="answerQuiz(2, 'roosevelt')">Roosevelt</button>
+
+        <!-- Pertanyaan 3 -->
+        <p data-key="quiz_q3">3. Apa nama dokumen perjanjian yang menghukum Jerman pasca PD I?</p>
+        <button onclick="answerQuiz(3, 'versailles')">Perjanjian Versailles</button>
+        <button onclick="answerQuiz(3, 'munich')">Perjanjian Munich</button>
+        <button onclick="answerQuiz(3, 'yalta')">Konferensi Yalta</button>
+
+        <!-- Pertanyaan 4 -->
+        <p data-key="quiz_q4">4. Tahun berapa Hitler menjadi Kanselir Jerman?</p>
+        <button onclick="answerQuiz(4, 1933)">1933</button>
+        <button onclick="answerQuiz(4, 1939)">1939</button>
+        <button onclick="answerQuiz(4, 1945)">1945</button>
+
+        <!-- Pertanyaan 5 -->
+        <p data-key="quiz_q5">5. Perang Dunia II berakhir pada tahun?</p>
+        <button onclick="answerQuiz(5, 1945)">1945</button>
+        <button onclick="answerQuiz(5, 1944)">1944</button>
+        <button onclick="answerQuiz(5, 1939)">1939</button>
+
+        <div class="result" id="quizResult"></div>
+        <button onclick="resetQuiz()" style="margin-top: 10px;">Reset Quiz</button>
+      </div>
+
+      <!-- ======= BAGIAN BARU: Sejarah Lengkap ======= -->
+      <h2 data-key="s5_title">Biografi Singkat Adolf Hitler</h2>
+      <p data-key="s5_text">
+        Adolf Hitler lahir pada 20 April 1889 di Braunau am Inn, Austria. Ia
+        tumbuh dalam keluarga yang keras dan mengalami masa kecil yang penuh
+        tekanan. Pada usia muda, Hitler pindah ke Wina dan kemudian ke Munich.
+        Ia bergabung dengan Partai Pekerja Jerman yang kemudian menjadi Partai
+        Nazi. Hitler dikenal karena kemampuan oratorinya dan ideologi nasionalisme
+        ekstrem yang menekankan superioritas rasial.
+      </p>
+
+      <h2 data-key="s6_title">Latar Belakang Kebangkitan Nazi</h2>
+      <p data-key="s6_text">
+        Setelah Perang Dunia I, Jerman mengalami krisis ekonomi, inflasi, dan
+        kekacauan politik. Perjanjian Versailles (1919) membebankan hukuman berat
+        kepada Jerman, termasuk pembayaran reparasi besar dan pengurangan wilayah.
+        Kondisi ini menciptakan rasa malu nasional dan kemarahan publik. Partai
+        Nazi memanfaatkan situasi tersebut dengan menjanjikan pemulihan ekonomi,
+        kebangkitan nasional, dan penolakan terhadap Perjanjian Versailles.
+      </p>
+
+      <h2 data-key="s7_title">Ideologi Nazi dan Anti-Semitisme</h2>
+      <p data-key="s7_text">
+        Ideologi Nazi didasarkan pada konsep “ras Arya” yang dianggap lebih
+        superior. Nazi juga menanamkan kebencian terhadap orang Yahudi, yang
+        dijadikan kambing hitam atas masalah sosial dan ekonomi Jerman.
+        Propaganda Nazi menyebarkan stereotip dan kebohongan tentang orang Yahudi,
+        yang akhirnya memicu kebijakan diskriminatif dan genosida.
+      </p>
+
+      <h2 data-key="s8_title">Kapan Nazi Berkuasa?</h2>
+      <p data-key="s8_text">
+        Nazi mulai memegang kekuasaan pada 1933, ketika Hitler diangkat sebagai
+        Kanselir Jerman. Setelah itu, Nazi membentuk pemerintahan otoriter,
+        menekan oposisi, membatasi kebebasan pers, dan menyingkirkan partai
+        politik lain. Pada 1934, Hitler menjadi “Führer” dengan kekuasaan penuh.
+      </p>
+
+      <h2 data-key="s9_title">Peristiwa Awal Perang</h2>
+      <p data-key="s9_text">
+        Pada 1 September 1939, Nazi Jerman menyerang Polandia. Serangan ini
+        memicu deklarasi perang oleh Inggris dan Prancis. Perang pun meluas dan
+        menjadi konflik global.
+      </p>
+
+      <h2 data-key="s10_title">Kejahatan Nazi Selama Perang</h2>
+      <ul data-key="s10_list">
+        <li>Genosida terhadap jutaan orang Yahudi (Holocaust)</li>
+        <li>Pembantaian terhadap kelompok minoritas lain</li>
+        <li>Eksperimen medis di kamp konsentrasi</li>
+        <li>Penindasan dan pembunuhan terhadap tahanan politik dan warga sipil</li>
+      </ul>
+
+      <h2 data-key="s11_title">Akhir Kekuasaan Nazi</h2>
+      <p data-key="s11_text">
+        Kekuasaan Nazi berakhir pada 1945, ketika Jerman kalah dalam Perang Dunia
+        II. Hitler bunuh diri pada 30 April 1945 di bunker bawah tanah di Berlin.
+        Setelah itu, Jerman dibagi oleh negara pemenang perang dan proses
+        denazifikasi dimulai.
+      </p>
+
+      <!-- ======= BAGIAN BARU: Sejarah World War II Singkat ======= -->
+      <h2 data-key="ww2_title">Sejarah Singkat Perang Dunia II (1939–1945)</h2>
+      <p data-key="ww2_text1">
+        Perang Dunia II adalah konflik global terbesar dalam sejarah, berlangsung dari tahun 1939 hingga 1945. Perang ini melibatkan dua blok besar: <b>Poros (Axis)</b> yang dipimpin oleh Jerman, Italia, dan Jepang, serta <b>Sekutu (Allies)</b> yang dipimpin oleh Inggris, Uni Soviet, dan Amerika Serikat. Konflik ini bermula dari ambisi ekspansi wilayah, ideologi totaliter, serta dampak Perjanjian Versailles.
+      </p>
+
+      <h2 data-key="ww2_title2">Tahap-Tahap Utama Perang</h2>
+      <ul data-key="ww2_list">
+        <li><b>1939–1940:</b> Jerman menyerang Polandia, lalu menguasai sebagian besar Eropa Barat.</li>
+        <li><b>1941:</b> Jerman menyerang Uni Soviet; Jepang menyerang Pearl Harbor dan AS masuk perang.</li>
+        <li><b>1942–1943:</b> Balik arah Sekutu mulai memenangkan beberapa pertempuran penting (Stalingrad, Midway).</li>
+        <li><b>1944:</b> Sekutu membuka front Barat melalui invasi Normandia (D-Day).</li>
+        <li><b>1945:</b> Jerman menyerah pada Mei, Jepang menyerah pada Agustus setelah bom atom di Hiroshima dan Nagasaki.</li>
+      </ul>
+
+      <h2 data-key="ww2_title3">Dampak Besar Perang Dunia II</h2>
+      <p data-key="ww2_text2">
+        Perang Dunia II menyebabkan kerusakan besar dan perubahan geopolitik. Jutaan orang tewas, kota-kota hancur, dan Holocaust menimbulkan tragedi kemanusiaan. Setelah perang, dunia terbagi menjadi dua blok besar (AS dan Uni Soviet), yang memicu era Perang Dingin. Selain itu, terbentuknya PBB menjadi upaya menjaga perdamaian dunia.
+      </p>
+
+      <p style="font-size: 14px; color: #aaa" data-key="note">
+        Catatan: Ideologi Nazi menyebabkan penderitaan besar dan menjadi pelajaran sejarah penting.
+      </p>
+    </div>
+
+    <div class="reveal-container">
+      <h4 class="reveal-text" id="reveal" data-key="quote">
+        Sejarah mengajarkan agar tragedi tidak terulang kembali.
+      </h4>
+    </div>
+
+    <div class="penutup">
+      <h4 data-key="footer">PROYEK SEJARAH — AZKI × CHATGPT</h4>
+      <p style="color: #555; margin-top: 10px;">
+        Sumber: Buku sejarah & dokumentasi publik (Wikipedia, Encyclopaedia, dll)
+      </p>
+    </div>
+
+    <script>
+      const text = {
+        id: {
+          welcome: "Selamat Datang",
+          welcome_desc: "Website edukasi sejarah Perang Dunia II",
+          start: "Masuk",
+          nav_home: "Home",
+          nav_history: "History",
+          nav_education: "Education",
+          tagline: "SEJARAH PERANG DUNIA II — NAZI JERMAN",
+          hero_sub: "SEJARAH PERANG DUNIA II",
+          hero_title: "Nazi Jerman dan Adolf Hitler",
+          marquee: "scroll untuk mempelajari sejarah perang dunia II",
+          quote: "Sejarah mengajarkan agar tragedi tidak terulang kembali.",
+          footer: "PROYEK SEJARAH — AZKI × CHATGPT",
+          s1_title: "Mengapa Perang Dunia II Dimulai?",
+          s1_text:
+            "Perang Dunia II dimulai tahun 1939 ketika Nazi Jerman menyerang Polandia. Penyebab utamanya adalah ketidakpuasan terhadap Perjanjian Versailles.",
+          s2_title: "Mengapa Adolf Hitler Membenci Orang Yahudi?",
+          s2_text:
+            "Kebencian Hitler berasal dari ideologi rasis dan antisemitisme. Orang Yahudi dijadikan kambing hitam tanpa dasar fakta.",
+          s3_title: "Musuh-Musuh Nazi Jerman",
+          s4_title: "Apa yang Dilakukan Nazi Selama Perang?",
+          s5_title: "Biografi Singkat Adolf Hitler",
+          s5_text:
+            "Adolf Hitler lahir pada 20 April 1889 di Braunau am Inn, Austria. Ia tumbuh dalam keluarga yang keras dan mengalami masa kecil yang penuh tekanan. Pada usia muda, Hitler pindah ke Wina dan kemudian ke Munich. Ia bergabung dengan Partai Pekerja Jerman yang kemudian menjadi Partai Nazi. Hitler dikenal karena kemampuan oratorinya dan ideologi nasionalisme ekstrem yang menekankan superioritas rasial.",
+          s6_title: "Latar Belakang Kebangkitan Nazi",
+          s6_text:
+            "Setelah Perang Dunia I, Jerman mengalami krisis ekonomi, inflasi, dan kekacauan politik. Perjanjian Versailles (1919) membebankan hukuman berat kepada Jerman, termasuk pembayaran reparasi besar dan pengurangan wilayah. Kondisi ini menciptakan rasa malu nasional dan kemarahan publik. Partai Nazi memanfaatkan situasi tersebut dengan menjanjikan pemulihan ekonomi, kebangkitan nasional, dan penolakan terhadap Perjanjian Versailles.",
+          s7_title: "Ideologi Nazi dan Anti-Semitisme",
+          s7_text:
+            "Ideologi Nazi didasarkan pada konsep “ras Arya” yang dianggap lebih superior. Nazi juga menanamkan kebencian terhadap orang Yahudi, yang dijadikan kambing hitam atas masalah sosial dan ekonomi Jerman. Propaganda Nazi menyebarkan stereotip dan kebohongan tentang orang Yahudi, yang akhirnya memicu kebijakan diskriminatif dan genosida.",
+          s8_title: "Kapan Nazi Berkuasa?",
+          s8_text:
+            "Nazi mulai memegang kekuasaan pada 1933, ketika Hitler diangkat sebagai Kanselir Jerman. Setelah itu, Nazi membentuk pemerintahan otoriter, menekan oposisi, membatasi kebebasan pers, dan menyingkirkan partai politik lain. Pada 1934, Hitler menjadi “Führer” dengan kekuasaan penuh.",
+          s9_title: "Peristiwa Awal Perang",
+          s9_text:
+            "Pada 1 September 1939, Nazi Jerman menyerang Polandia. Serangan ini memicu deklarasi perang oleh Inggris dan Prancis. Perang pun meluas dan menjadi konflik global.",
+          s10_title: "Kejahatan Nazi Selama Perang",
+          s10_list: "",
+          s11_title: "Akhir Kekuasaan Nazi",
+          s11_text:
+            "Kekuasaan Nazi berakhir pada 1945, ketika Jerman kalah dalam Perang Dunia II. Hitler bunuh diri pada 30 April 1945 di bunker bawah tanah di Berlin. Setelah itu, Jerman dibagi oleh negara pemenang perang dan proses denazifikasi dimulai.",
+          s12_title: "Timeline Nazi Jerman (1919–1945)",
+          quiz_title: "Quiz Singkat",
+          quiz_q1: "1. Tahun berapa Nazi menyerang Polandia?",
+          quiz_q2: "2. Siapa pemimpin Nazi Jerman?",
+          quiz_q3: "3. Apa nama dokumen perjanjian yang menghukum Jerman pasca PD I?",
+          quiz_q4: "4. Tahun berapa Hitler menjadi Kanselir Jerman?",
+          quiz_q5: "5. Perang Dunia II berakhir pada tahun?",
+          ww2_title: "Sejarah Singkat Perang Dunia II (1939–1945)",
+          ww2_text1:
+            "Perang Dunia II adalah konflik global terbesar dalam sejarah, berlangsung dari tahun 1939 hingga 1945. Perang ini melibatkan dua blok besar: Poros (Axis) yang dipimpin oleh Jerman, Italia, dan Jepang, serta Sekutu (Allies) yang dipimpin oleh Inggris, Uni Soviet, dan Amerika Serikat. Konflik ini bermula dari ambisi ekspansi wilayah, ideologi totaliter, serta dampak Perjanjian Versailles.",
+          ww2_title2: "Tahap-Tahap Utama Perang",
+          ww2_list:
+            "1939–1940: Jerman menyerang Polandia, lalu menguasai sebagian besar Eropa Barat.\n1941: Jerman menyerang Uni Soviet; Jepang menyerang Pearl Harbor dan AS masuk perang.\n1942–1943: Balik arah Sekutu mulai memenangkan beberapa pertempuran penting (Stalingrad, Midway).\n1944: Sekutu membuka front Barat melalui invasi Normandia (D-Day).\n1945: Jerman menyerah pada Mei, Jepang menyerah pada Agustus setelah bom atom di Hiroshima dan Nagasaki.",
+          ww2_title3: "Dampak Besar Perang Dunia II",
+          ww2_text2:
+            "Perang Dunia II menyebabkan kerusakan besar dan perubahan geopolitik. Jutaan orang tewas, kota-kota hancur, dan Holocaust menimbulkan tragedi kemanusiaan. Setelah perang, dunia terbagi menjadi dua blok besar (AS dan Uni Soviet), yang memicu era Perang Dingin. Selain itu, terbentuknya PBB menjadi upaya menjaga perdamaian dunia.",
+          note:
+            "Catatan: Ideologi Nazi menyebabkan penderitaan besar dan menjadi pelajaran sejarah penting.",
+        },
+        en: {
+          welcome: "Welcome",
+          welcome_desc: "World War II history education website",
+          start: "Enter",
+          nav_home: "Home",
+          nav_history: "History",
+          nav_education: "Education",
+          tagline: "WORLD WAR II HISTORY — NAZI GERMANY",
+          hero_sub: "WORLD WAR II HISTORY",
+          hero_title: "Nazi Germany and Adolf Hitler",
+          marquee: "scroll to learn about World War II history",
+          quote: "History teaches us so tragedy is never repeated.",
+          footer: "HISTORY PROJECT — AZKI × CHATGPT",
+          s1_title: "Why Did World War II Begin?",
+          s1_text:
+            "World War II began in 1939 when Nazi Germany invaded Poland. The main cause was dissatisfaction with the Treaty of Versailles.",
+          s2_title: "Why Did Adolf Hitler Hate Jewish People?",
+          s2_text:
+            "Hitler’s hatred came from racist ideology and antisemitism. Jewish people were falsely blamed.",
+          s3_title: "Enemies of Nazi Germany",
+          s4_title: "What Did the Nazis Do During the War?",
+          s5_title: "Adolf Hitler – Short Biography",
+          s5_text:
+            "Adolf Hitler was born on April 20, 1889, in Braunau am Inn, Austria. He grew up in a strict family environment and faced a difficult childhood. As a young adult, Hitler moved to Vienna and later to Munich. He joined the German Workers' Party, which later became the Nazi Party. Hitler was known for his powerful speeches and extreme nationalist ideology emphasizing racial superiority.",
+          s6_title: "Rise of the Nazi Party",
+          s6_text:
+            "After World War I, Germany suffered from economic crisis, hyperinflation, and political instability. The Treaty of Versailles (1919) imposed heavy penalties on Germany, including huge reparations and territorial losses. This created national humiliation and anger. The Nazi Party exploited this situation by promising economic recovery, national revival, and rejection of the Treaty.",
+          s7_title: "Nazi Ideology and Anti-Semitism",
+          s7_text:
+            "Nazi ideology was based on the concept of the “Aryan race” being superior. Nazis also promoted hatred toward Jewish people, blaming them for Germany’s problems. Nazi propaganda spread stereotypes and falsehoods about Jews, which eventually led to discriminatory policies and genocide.",
+          s8_title: "When Did the Nazis Take Power?",
+          s8_text:
+            "The Nazis gained power in 1933, when Hitler was appointed Chancellor of Germany. Nazi rule then became authoritarian, suppressing opposition, controlling the media, and banning other political parties. By 1934, Hitler became the “Führer” with full power.",
+          s9_title: "Early War Events",
+          s9_text:
+            "On September 1, 1939, Nazi Germany invaded Poland. This attack triggered Britain and France to declare war. The conflict soon expanded into a global war.",
+          s10_title: "Nazi Crimes During the War",
+          s10_list: "",
+          s11_title: "End of Nazi Rule",
+          s11_text:
+            "Nazi rule ended in 1945, when Germany was defeated in World War II. Hitler committed suicide on April 30, 1945, in his underground bunker in Berlin. Germany was then divided by the victorious powers and denazification began.",
+          s12_title: "Nazi Germany Timeline (1919–1945)",
+          quiz_title: "Quick Quiz",
+          quiz_q1: "1. What year did Nazis invade Poland?",
+          quiz_q2: "2. Who was the leader of Nazi Germany?",
+          quiz_q3: "3. What treaty punished Germany after WWI?",
+          quiz_q4: "4. What year did Hitler become Chancellor?",
+          quiz_q5: "5. World War II ended in what year?",
+          ww2_title: "Brief History of World War II (1939–1945)",
+          ww2_text1:
+            "World War II was the largest global conflict in history, lasting from 1939 to 1945. It involved two major blocs: the Axis led by Germany, Italy, and Japan, and the Allies led by Britain, the Soviet Union, and the United States. The war began due to expansionist ambitions, totalitarian ideologies, and the consequences of the Treaty of Versailles.",
+          ww2_title2: "Main Phases of the War",
+          ww2_list:
+            "1939–1940: Germany invaded Poland and occupied much of Western Europe.\n1941: Germany attacked the Soviet Union; Japan attacked Pearl Harbor and the US entered the war.\n1942–1943: Allies began turning the tide with major victories (Stalingrad, Midway).\n1944: Allies opened the Western Front through the Normandy invasion (D-Day).\n1945: Germany surrendered in May, Japan surrendered in August after atomic bombs on Hiroshima and Nagasaki.",
+          ww2_title3: "Major Impacts of World War II",
+          ww2_text2:
+            "World War II caused massive destruction and geopolitical change. Millions died, cities were destroyed, and the Holocaust caused a tragic humanitarian crisis. After the war, the world split into two blocs (US and Soviet Union), leading to the Cold War. The United Nations was formed to promote global peace.",
+          note:
+            "Note: Nazi ideology caused immense human suffering and remains a historical lesson.",
+        },
+      };
+
+      function setLang(lang) {
+        document.querySelectorAll("[data-key]").forEach((el) => {
+          el.textContent = text[lang][el.dataset.key];
+        });
+        // Tutup dropdown setelah pilih bahasa
+        document.getElementById("langDropdown").classList.remove("show");
+      }
+
+      function toggleLang() {
+        document.getElementById("langDropdown").classList.toggle("show");
+      }
+
+      function closeModal() {
+        document.getElementById("welcomeModal").style.display = "none";
+      }
+
+      function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("show");
+      }
+
+      window.addEventListener("scroll", () => {
+        const el = document.getElementById("reveal");
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+          el.classList.add("active");
+        }
+      });
+
+      // ======= QUIZ =======
+      let quizScore = 0;
+      let answered = {};
+
+      const correctAnswers = {
+        1: 1939,
+        2: "hitler",
+        3: "versailles",
+        4: 1933,
+        5: 1945,
+      };
+
+      function answerQuiz(q, answer) {
+        if (answered[q]) return;
+        answered[q] = true;
+
+        if (answer === correctAnswers[q]) {
+          quizScore++;
+          document.getElementById("quizResult").textContent =
+            "Jawaban benar! Skor: " + quizScore + " / 5";
+        } else {
+          document.getElementById("quizResult").textContent =
+            "Jawaban salah. Skor: " + quizScore + " / 5";
+        }
+      }
+
+      function resetQuiz() {
+        quizScore = 0;
+        answered = {};
+        document.getElementById("quizResult").textContent =
+          "Quiz di-reset. Mulai lagi!";
+      }
+
+      // ======= LOADING 1-100 (10 DETIK) =======
+      let load = 0;
+      const loadingText = document.getElementById("loadingText");
+      const loadingScreen = document.getElementById("loadingScreen");
+
+      const interval = setInterval(() => {
+        load++;
+        loadingText.textContent = load + "%";
+
+        if (load >= 100) {
+          clearInterval(interval);
+          loadingScreen.style.display = "none";
+        }
+      }, 100);
+    </script>
+  </body>
+</html>

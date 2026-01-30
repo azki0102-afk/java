@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APEXA.drift</title>
+    <link rel="icon" type="image/png" href="./download.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+
+    <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      ul {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at top, rgba(0, 0, 0, 0.25), transparent 60%),
+          radial-gradient(circle at bottom, rgba(8, 8, 8, 0.25), transparent 60%),
+          linear-gradient(180deg, #050008, #0b0014, #000);
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* ===== BACKGROUND ANIM ===== */
+      .bg-lines {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.6;
+        background:
+          repeating-linear-gradient(
+            120deg,
+            rgba(255, 0, 128, 0.08),
+            rgba(255, 0, 128, 0.08) 2px,
+            transparent 2px,
+            transparent 20px
+          );
+        animation: moveLines 12s linear infinite;
+      }
+
+      @keyframes moveLines {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 1000px 1000px;
+        }
+      }
+
+      nav {
+        background: rgba(17, 17, 17, 0.9);
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(8px);
+      }
+
+      .logo img {
+        height: 40px;
+        filter: drop-shadow(0 0 6px rgb(255, 0, 179));
+        transition: transform 0.4s ease, filter 0.4s ease;
+        animation: logoGlow 2.5s infinite alternate;
+      }
+      .logo img:hover {
+        transform: scale(1.15) rotate(-3deg);
+        filter: drop-shadow(0 0 15px #ff0080)
+          drop-shadow(0 0 30px rgb(255, 0, 128));
+      }
+      @keyframes logoGlow {
+        0% {
+          filter: drop-shadow(0 0 5px #ff0062);
+        }
+        100% {
+          filter: drop-shadow(0 0 20px #ff0080)
+            drop-shadow(0 0 40px rgb(255, 0, 157));
+        }
+      }
+
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+      .nav-menu a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .nav-menu a:hover {
+        color: #ffd700;
+      }
+
+      /* ===== MENU HP ===== */
+      .menu-icon {
+        display: none;
+        font-size: 1.8em;
+        cursor: pointer;
+      }
+      @media screen and (max-width: 768px) {
+        nav {
+          padding: 15px 20px;
+        }
+        .nav-menu {
+          display: none;
+          position: absolute;
+          top: 70px;
+          right: 20px;
+          background: #111;
+          border: 1px solid #333;
+          border-radius: 10px;
+          flex-direction: column;
+          width: 200px;
+          overflow: hidden;
+        }
+        .nav-menu.show {
+          display: flex;
+        }
+        .nav-menu li {
+          width: 100%;
+        }
+        .nav-menu li a {
+          display: block;
+          padding: 12px 15px;
+          border-bottom: 1px solid #222;
+        }
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .hero {
+        text-align: center;
+        padding: 60px 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero h3 {
+        color: #ffd700;
+        letter-spacing: 3px;
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+      }
+      .hero img {
+        filter: drop-shadow(0 0 25px #ffd700);
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .marquee-container {
+        border-top: 2px solid #ffd700;
+        border-bottom: 2px solid #ffd700;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+      }
+      .marquee-text {
+        white-space: nowrap;
+        padding-left: 100%;
+        animation: marquee 12s linear infinite;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #fff;
+      }
+      @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-100%); }
+      }
+
+      .content {
+        max-width: 900px;
+        margin: auto;
+        padding: 60px 20px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .content p {
+        color: #ccc;
+        line-height: 1.7;
+        margin-top: 20px;
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+      }
+
+      /* ===== CAR LIST ===== */
+      .cars {
+        display: flex;
+        gap: 20px;
+        padding: 40px 20px;
+        overflow-x: auto;
+        position: relative;
+        z-index: 1;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .cars::-webkit-scrollbar {
+        display: none;
+      }
+
+      .car-card {
+        min-width: 260px;
+        background: #111;
+        border: 1px solid #333;
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: cardIn 1s ease forwards;
+        opacity: 0;
+      }
+      .car-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #ff0080;
+      }
+      .car-card img {
+        width: 100%;
+        border-radius: 10px;
+      }
+      .car-card h4 {
+        color: #ffd700;
+        margin: 10px 0;
+      }
+      .car-card p {
+        color: #aaa;
+        font-size: 0.9em;
+      }
+
+      @keyframes cardIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .quote {
+        text-align: center;
+        padding: 80px 20px;
+        font-style: italic;
+        font-size: 1.5em;
+        color: #ffd700;
+        position: relative;
+        z-index: 1;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        color: #777;
+        border-top: 1px solid #222;
+        position: relative;
+        z-index: 1;
+      }
+
+      .arrow {
+        position: fixed;
+        right: 30px;
+        bottom: 80px;
+        width: 60px;
+        height: 60px;
+        z-index: 999;
+      }
+
+      /* ===== POPUP SELAMAT DATANG ===== */
+      .welcome-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      .welcome-content {
+        background: #111;
+        border: 2px solid #ff0080;
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
+        width: 85%;
+        max-width: 320px;
+        box-shadow: 0 0 25px #ff0080;
+        animation: popupIn 0.8s ease;
+      }
+      .welcome-content h2 {
+        color: #ffd700;
+        font-size: 1.1em;
+        margin-bottom: 8px;
+      }
+      .welcome-content p {
+        color: #ccc;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+      }
+      .btn-close {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 10px;
+        background: #ff0080;
+        color: #fff;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+      @keyframes popupIn {
+        0% { transform: translateY(40px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+
+      /* ===== INTRO DRIFT ===== */
+      .intro {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        overflow: hidden;
+      }
+
+      /* DRIFT EFFECT: smoke */
+      .smoke {
+        position: absolute;
+        width: 400px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(255,255,255,0.35), rgba(255,255,255,0));
+        opacity: 0.6;
+        animation: smokeMove 4s ease-in-out infinite;
+        filter: blur(10px);
+      }
+      .smoke.smoke1 { left: 30%; top: 55%; }
+      .smoke.smoke2 { left: 55%; top: 55%; animation-delay: 1.5s; }
+
+      @keyframes smokeMove {
+        0% { transform: translateX(-60px) scale(0.9); opacity: 0.3; }
+        50% { opacity: 0.7; }
+        100% { transform: translateX(60px) scale(1.1); opacity: 0.3; }
+      }
+
+      /* DRIFT CAR SHAPE */
+      .car {
+        width: 140px;
+        height: 70px;
+        background: linear-gradient(135deg, #ff0080, #ffd700);
+        border-radius: 18px;
+        position: absolute;
+        bottom: 18%;
+        left: -200px;
+        transform-origin: center;
+        animation: driftIn 4s ease forwards;
+        box-shadow: 0 0 30px #ff0080;
+      }
+
+      @keyframes driftIn {
+        0% {
+          left: -200px;
+          transform: rotate(-10deg);
+          opacity: 0;
+        }
+        40% {
+          opacity: 1;
+        }
+        70% {
+          left: 50%;
+          transform: translateX(-50%) rotate(25deg);
+        }
+        100% {
+          left: 50%;
+          transform: translateX(-50%) rotate(0deg);
+        }
+      }
+
+      .intro h1 {
+        position: absolute;
+        top: 30%;
+        font-size: 2.4rem;
+        letter-spacing: 6px;
+        color: #ffd700;
+        text-align: center;
+        opacity: 0;
+        animation: textIn 4s ease forwards;
+      }
+      @keyframes textIn {
+        0% { opacity: 0; transform: translateY(30px); }
+        60% { opacity: 1; }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      .intro h2 {
+        position: absolute;
+        top: 50%;
+        font-size: 1.6rem;
+        color: #fff;
+        opacity: 0;
+        animation: textIn2 4s ease forwards;
+      }
+      @keyframes textIn2 {
+        0% { opacity: 0; transform: translateY(30px); }
+        60% { opacity: 1; }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-lines"></div>
+
+    <!-- INTRO DRIFT -->
+    <div class="intro" id="intro">
+      <h1>APEXA DRIFT</h1>
+      <h2>welcome to my website</h2>
+
+      <!-- smoke effect -->
+      <div class="smoke smoke1"></div>
+      <div class="smoke smoke2"></div>
+
+      <!-- car (lebih simpel, bukan lambo) -->
+      <div class="car"></div>
+    </div>
+
+    <!-- POPUP SELAMAT DATANG -->
+    <div class="welcome-modal" id="welcomeModal">
+      <div class="welcome-content">
+        <h2>Selamat Datang!</h2>
+        <p>"Selamat menikmati website APEXA Drift".</p>
+        <button class="btn-close" onclick="closeWelcome()">Tutup</button>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+      <div class="logo">
+        <img src="./download.svg" alt="APEXA" />
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Drift Car</a></li>
+        <li><a href="#">Tentang Drift</a></li>
+        <li><a href="#">Sejarah Drifting</a></li>
+      </ul>
+      <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h3>"Kuasai Tikungan, Taklukkan Aspal"</h3>
+      <img src="./logdriftjpg-removebg-preview.png" width="250" />
+      <h1 style="display: flex; text-align: center; justify-content: center">
+        "Selamat Datang di Dunia Drifting"
+      </h1>
+    </section>
+
+    <div class="marquee-container">
+      <div class="marquee-text">
+        DRIFT • RWD • ASPAL PANAS • ASAP BAN • HIGH ANGLE • FULL THROTTLE
+      </div>
+    </div>
+
+    <section class="content">
+      <h2>Apa itu Drifting?</h2>
+      <p>
+        Drifting adalah teknik mengemudi ekstrem dan olahraga otomotif di mana
+        pengemudi sengaja membuat roda belakang kehilangan traksi, menyebabkan
+        mobil meluncur miring (oversteer) dalam kecepatan tinggi, namun tetap
+        dalam kontrol penuh.
+      </p>
+    </section>
+
+    <h1 style="text-align:center; margin-top: 30px; color:#ffd700;">
+      Mobil yang bagus untuk jadi mobil drift
+    </h1>
+
+    <section class="cars" style="display: flex; justify-content: center">
+      <div class="car-card">
+        <img src="./5.jpg" />
+        <h4>GR Supra MK5</h4>
+        <p>Mobil drift dengan desain modern yang seimbang.</p>
+      </div>
+      <div class="car-card">
+        <img src="./fast.jpg" />
+        <h4>Nissan Silvia S15</h4>
+        <p>Mobil drift favorit dengan keseimbangan sempurna.</p>
+      </div>
+      <div class="car-card">
+        <img src="./68jpg.jpg" />
+        <h4>Toyota AE86</h4>
+        <p>Legenda drifting Jepang.</p>
+      </div>
+      <div class="car-card">
+        <img src="./r344jpg.jpg" />
+        <h4>GTR R34</h4>
+        <p>Mobil ikonik Nissan dengan body elegan.</p>
+      </div>
+    </section>
+
+    <h1 style="text-align:center; margin-top: 30px; color:#ffd700;">
+      Drifter Terkenal
+    </h1>
+
+    <section class="cars" style="display: flex; justify-content: center">
+      <div class="car-card">
+        <h4>Keiichi Tsuchiya (Jepang)</h4>
+        <p>
+          Julukan: Drift King (DK) Pelopor drifting modern Ikon AE86
+        </p>
+      </div>
+      <div class="car-card">
+        <h4>Daigo Saito (Jepang)</h4>
+        <p>
+          Juara D1GP & Formula Drift, gaya agresif ekstrem.
+        </p>
+      </div>
+      <div class="car-card">
+        <h4>Ken Block (USA)</h4>
+        <p>
+          Drift + rally + showmanship, Gymkhana membuat drifting terkenal.
+        </p>
+      </div>
+      <div class="car-card">
+        <h4>Mitsuru Haraguchi</h4>
+        <p>“Silent Drift Master” | “Precision King” | “Smooth Operator”</p>
+      </div>
+    </section>
+
+    <div class="quote">“Bukan soal menang, tapi soal gaya”</div>
+    <footer>KERJASAMA AZKI × AI</footer>
+
+    <script>
+      function closeWelcome() {
+        document.getElementById("welcomeModal").style.display = "none";
+      }
+      function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("show");
+      }
+
+      // Intro drift otomatis hilang setelah 4 detik
+      window.onload = function () {
+        document.getElementById("welcomeModal").style.display = "flex";
+        setTimeout(function () {
+          document.getElementById("intro").style.display = "none";
+        }, 4200);
+      };
+    </script>
+  </body>
+</html>
