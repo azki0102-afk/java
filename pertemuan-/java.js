@@ -1,0 +1,1 @@
+let kresek = 50;

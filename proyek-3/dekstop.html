@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>porshe 911</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="dekstop.css" />
+  </head>
+  <body>
+    <!-- HEADER / NAVBAR -->
+    <header>
+      <div class="d">
+        <nav class="navbar">
+          <!-- LOGO -->
+          <div class="logo">
+            <img src="./7e5fd8162723779159824e8634bd9c64.jpg" alt="" width="30px" />
+          </div>
+
+          <!-- NAV LINKS -->
+          <ul class="nav-links">
+            <li><a href="#beranda">home</a></li>
+            <li><a href="#layanan">about</a></li>
+            <li><a href="#tentang">custom</a></li>
+            <li><a href="#kontak">build</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="lnk"></div>
+    <div class="loid">
+      <div class="ddd">
+        <h1>
+          Hypercar dan supercar adalah kategori mobil sport berperforma sangat
+          tinggi. Supercar adalah mobil cepat dan eksotis, sedangkan hypercar
+          adalah puncak performa otomotif, lebih langka, bertenaga, dan mahal.
+        </h1>
+
+        <div class="vv" style="width: 100px; height: 40px; border-radius: 10px">
+          <button id="shopBtn">shop me</button>
+        </div>
+      </div>
+      <div class="img">
+        <img src="./porsche-model5 1 (1).png" alt="" width="500px" />
+      </div>
+    </div>
+
+    <!-- MODELS SECTION -->
+    <div class="az">
+      <h3>models hypercars</h3>
+    </div>
+    <div class="za">
+      <img src="./mk3.jpg" alt="" width="200px" />
+      <img src="./a474c5a38df8a728e2aeb780a89571a9.jpg" alt="" width="200px" />
+      <img src="./0321f588750c77c93ac9233016cfd40d.jpg" alt="" width="200px" />
+      <img src="./b123e99ed856994b6a80140af83a5604.jpg" alt="" width="200px" />
+      <img src="./3cd8ee4845c7ac5a9281810faf33103f.jpg" alt="" width="200px" />
+      <img src="./cayman.jpg" alt="" width="200px" />
+      <img src="./b123e99ed856994b6a80140af83a5604.jpg" alt="" width="200px" />
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="d">
+      <input id="name" name="name" placeholder="name" />
+      <input id="email" name="email" placeholder="email" />
+      <input id="link" name="link" placeholder="link" />
+      <button style="background-color: black; width: 90px; color: white" id="clickMeBtn">
+        cklik me
+      </button>
+    </div>
+    <div class="as">
+      <p>
+        De acordo com a LGPD, concordo em fornecer os dados acima para que a
+        Touring Cars entre em contato comigo para apresentar serviços. Seu nome,
+        e-mail e telefone serão usados de acordo com a nossa Política de
+        Privacidade.
+      </p>
+    </div>
+
+    <!-- IMAGE SECTIONS -->
+    <div class="al">
+      <h3>img super car </h3>
+    </div>
+    <div class="img-1">
+      <img src="./b123e99ed856994b6a80140af83a5604.jpg" alt="" width="300px" />
+      <img src="./Text Macan.png" alt="" width="300px" />
+    </div>
+
+    <div class="az">
+      <img src="./Cars sold.png" alt="" width="700px" />
+    </div>
+    <div class="za">
+      <img src="./touringcars.png" alt="" width="100px" />
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      // Tombol Shop Me
+      document.getElementById("shopBtn").addEventListener("click", function() {
+        alert("Terima kasih telah menekan tombol Shop Me!");
+      });
+
+      // Tombol Click Me
+      document.getElementById("clickMeBtn").addEventListener("click", function() {
+        const name = document.getElementById("name").value;
+        alert("Halo " + name + ", formulir Anda dikirim!");
+      });
+    </script>
+  </body>
+</html>
