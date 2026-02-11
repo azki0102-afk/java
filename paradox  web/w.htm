@@ -10,356 +10,168 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Orbitron",sans-serif}
-body{background:#0b0b0b;color:#fff;overflow-x:hidden}
+body{background:#0b0b0b;color:#fff;overflow-x:hidden;padding-bottom:80px}
 
-/* ===== AMBIENT MOTION ===== */
+/* ambient */
 body::before{
- content:"";
- position:fixed;inset:0;
- background:radial-gradient(circle at 30% 20%,rgba(255,46,46,.08),transparent 60%);
- animation:ambient 12s linear infinite;
- pointer-events:none;
- z-index:-1
-}
+content:"";position:fixed;inset:0;
+background:radial-gradient(circle at 30% 20%,rgba(255,46,46,.08),transparent 60%);
+animation:ambient 12s linear infinite;
+pointer-events:none;z-index:-1}
 @keyframes ambient{50%{filter:hue-rotate(10deg)}}
 
-/* ===== SCROLL PROGRESS ===== */
-#scrollBar{
- position:fixed;top:0;left:0;
- height:3px;width:0%;
- background:#ff2e2e;
- z-index:9999
-}
-
-/* ===== LOADER ===== */
-#loader{
- position:fixed;inset:0;background:#000;
- display:flex;flex-direction:column;
- justify-content:center;align-items:center;
- z-index:9999
-}
+/* loader */
+#loader{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10000}
 #loader h1{color:#ff2e2e;letter-spacing:4px}
-#loader span{width:140px;height:4px;background:#222;margin-top:14px;overflow:hidden}
-#loader span::after{
- content:"";display:block;height:100%;width:40%;
- background:#ff2e2e;animation:load 1s infinite
-}
+#loader span{margin-top:15px;width:140px;height:4px;background:#222;overflow:hidden}
+#loader span::after{content:"";display:block;height:100%;width:40%;background:#ff2e2e;animation:load 1s infinite}
 @keyframes load{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
 
-/* ===== NAV ===== */
-nav{
- position:sticky;top:0;z-index:1000;
- background:#111;padding:14px 50px;
- display:flex;justify-content:space-between;align-items:center
-}
+/* navbar */
+nav{background:#111;display:flex;justify-content:space-between;align-items:center;padding:15px 50px;position:sticky;top:0;z-index:1000}
 .logo-img{width:50px;filter:drop-shadow(0 0 10px #ff2e2e)}
-.nav-links{display:flex;gap:25px;list-style:none}
-.nav-links a{text-decoration:none;color:#fff}
+.nav-links{list-style:none;display:flex;gap:25px}
+.nav-links a{color:#fff;text-decoration:none}
 .nav-links a:hover{color:#ff2e2e}
 
-/* ===== HERO ===== */
+/* hero */
 .hero{text-align:center;padding:70px 20px}
 .hero h1{color:#ff2e2e;font-size:42px;letter-spacing:4px}
-.hero img{
- width:380px;margin:25px 0;
- filter:drop-shadow(0 0 30px #ff2e2e);
- animation:float 4s ease-in-out infinite
-}
+.hero img{width:380px;margin:25px 0;filter:drop-shadow(0 0 30px #ff2e2e);animation:float 4s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-12px)}}
 
-/* ===== FILTER ===== */
-.filter{
- display:flex;justify-content:center;
- gap:14px;margin-bottom:25px
-}
-.filter button{
- background:#111;color:#fff;
- border:1px solid #333;
- padding:8px 18px;
- cursor:pointer;letter-spacing:2px
-}
-.filter button:hover{
- border-color:#ff2e2e;color:#ff2e2e
-}
+/* marquee */
+.marquee-container{background:#ff2e2e;padding:12px;overflow:hidden}
+.teks-gerak{white-space:nowrap;display:inline-block;animation:marquee 14s linear infinite;color:#000;font-weight:bold;letter-spacing:2px}
+@keyframes marquee{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 
-/* ===== GALLERY ===== */
-.gallery-wrap{padding:50px 10px}
-.drift-gallery{
- display:flex;gap:26px;
- overflow-x:auto;
- scroll-snap-type:x mandatory;
- scrollbar-width:none
-}
+/* gallery */
+.gallery-wrap{padding:60px 10px}
+.filter{display:flex;justify-content:center;gap:14px;margin-bottom:25px}
+.filter button{background:#111;color:#fff;border:1px solid #333;padding:8px 18px;cursor:pointer}
+.filter button:hover{border-color:#ff2e2e;color:#ff2e2e}
+
+.drift-gallery{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .drift-gallery::-webkit-scrollbar{display:none}
-
 .drift-gallery img{
- width:220px;
- border-radius:16px;
- scroll-snap-align:center;
- cursor:pointer;
- transition:.4s;
- filter:brightness(.5);
- position:relative
+width:220px;border-radius:16px;cursor:pointer;
+scroll-snap-align:center;transition:.4s;
+filter:brightness(.75)
 }
+.drift-gallery img:hover{transform:scale(1.15);filter:brightness(1);box-shadow:0 0 40px #ff2e2e}
 
-/* hover info card */
-.drift-gallery img::after{
- content:attr(data-name) " • " attr(data-build) " • " attr(data-year);
- position:absolute;left:0;right:0;bottom:0;
- padding:10px;
- font-size:11px;
- background:linear-gradient(transparent,rgba(0,0,0,.85));
- opacity:0;
- transition:.3s;
- border-radius:0 0 16px 16px
-}
-.drift-gallery img:hover::after{opacity:1}
+/* core ideas */
+#coreIdeas{text-align:center;padding:90px 20px;max-width:900px;margin:auto}
+#coreIdeas h1{color:#ff2e2e;letter-spacing:4px;font-size:36px;margin-bottom:30px}
+#coreIdeas p{color:#ccc;line-height:1.9;font-size:14px}
 
-/* active center */
-.drift-gallery img.active{
- filter:brightness(1);
- transform:scale(1.15);
- box-shadow:0 0 40px #ff2e2e
-}
+/* footer */
+footer{background:#111;text-align:center;padding:30px;margin-top:80px;border-top:2px solid #ff2e2e}
 
-/* ===== DOTS & PROGRESS ===== */
-.dots{
- display:flex;justify-content:center;
- gap:10px;margin-top:20px
-}
-.dots span{
- width:10px;height:10px;
- border-radius:50%;
- background:#333
-}
-.dots span.active{
- background:#ff2e2e;
- box-shadow:0 0 10px #ff2e2e
-}
-.progress{
- width:160px;height:4px;
- background:#222;
- margin:20px auto;
- overflow:hidden
-}
-.progress div{height:100%;width:0%;background:#ff2e2e}
-
-/* ===== SWIPE HINT ===== */
-#swipeHint{
- position:fixed;bottom:90px;left:50%;
- transform:translateX(-50%);
- background:#111;
- padding:10px 18px;
- border:1px solid #ff2e2e;
- border-radius:20px;
- font-size:12px;
- letter-spacing:2px;
- animation:pulse 1.4s infinite;
- z-index:999
-}
-@keyframes pulse{50%{opacity:.4}}
-
-/* ===== SHOWROOM ===== */
-#showroom{
- display:block;margin:30px auto;
- background:none;
- border:1px solid #ff2e2e;
- color:#ff2e2e;
- padding:10px 24px;
- cursor:pointer;letter-spacing:3px
-}
-
-/* ===== MODAL ===== */
-#imgModal{
- position:fixed;inset:0;
- background:rgba(0,0,0,.95);
- display:none;
- justify-content:center;align-items:center;
- z-index:10000
-}
-#imgModal img{
- max-width:90%;max-height:90%;
- border:3px solid #ff2e2e;
- border-radius:18px;
- animation:zoom .4s
-}
-@keyframes zoom{from{transform:scale(.7);opacity:0}}
-
-.nav-btn{
- position:absolute;top:50%;
- transform:translateY(-50%);
- font-size:60px;color:#ff2e2e;
- cursor:pointer;padding:20px
-}
+/* modal */
+#imgModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);justify-content:center;align-items:center;z-index:10000}
+#imgModal img{max-width:90%;max-height:90%;border:3px solid #ff2e2e;border-radius:14px;box-shadow:0 0 40px #ff2e2e}
+.nav-btn{position:absolute;top:50%;transform:translateY(-50%);font-size:60px;color:#ff2e2e;cursor:pointer;padding:20px}
 .nav-btn.left{left:20px}
 .nav-btn.right{right:20px}
-
-#imgTitle{position:absolute;bottom:40px;opacity:.8}
-#counter{position:absolute;top:30px;opacity:.7}
-#carDetail{
- position:absolute;bottom:80px;
- text-align:center;font-size:14px;opacity:.85
-}
-
-/* ===== FOOTER ===== */
-footer{
- margin-top:80px;
- padding:30px;
- text-align:center;
- border-top:2px solid #ff2e2e;
- background:#111
-}
-
-@media(max-width:600px){
- .hero img{width:260px}
- .drift-gallery img{width:180px}
-}
+#imgTitle{position:absolute;bottom:40px;font-size:18px;letter-spacing:2px}
 </style>
 </head>
 
 <body>
 
-<div id="scrollBar"></div>
-
-<div id="loader">
- <h1>PARADOX DRIFT</h1>
- <span></span>
-</div>
+<div id="loader"><h1>PARADOX DRIFT</h1><span></span></div>
 
 <nav>
- <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" class="logo-img">
- <ul class="nav-links">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Cars</a></li>
-  <li><a href="#">Gallery</a></li>
-  <li><a href="#">About</a></li>
- </ul>
+<img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" class="logo-img">
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="#">Cars</a></li>
+<li><a href="#">Gallery</a></li>
+<li><a href="#">About</a></li>
+</ul>
 </nav>
 
 <section class="hero">
- <h1>PARADOX DRIFT</h1>
- <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png">
- <p>Konsep modifikasi ekstrem. Anti normal. Anti arus.</p>
+<h1>PARADOX DRIFT</h1>
+<img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png">
+<p>Konsep modifikasi ekstrem. Anti normal. Anti arus.</p>
 </section>
+
+<div class="marquee-container">
+<span class="teks-gerak">PROJECT PARADOX DRIFT — EXTREME DRIFT • CUSTOM SKETCH • STREET CULTURE</span>
+</div>
 
 <section class="gallery-wrap">
-
 <div class="filter">
- <button data-f="all">ALL</button>
- <button data-f="jdm">JDM</button>
- <button data-f="euro">EURO</button>
- <button data-f="concept">CONCEPT</button>
+<button>ALL</button>
+<button>JDM</button>
+<button>EURO</button>
+<button>CONCEPT</button>
 </div>
 
-<button id="showroom">▶ ENTER SHOWROOM</button>
-
-<div class="drift-gallery" id="carousel">
- <img src="./s15parad.jpeg" data-name="Nissan S15" data-build="Street Drift" data-year="1999" data-cat="jdm">
- <img src="./supraparadox.png" data-name="Toyota Supra" data-build="Track" data-year="1998" data-cat="jdm">
-  <img src="./aeparad.png" data-name="ae86" data-build="Track" data-year="1998" data-cat="jdm">
- <img src="./r8parad.png" data-name="Audi R8" data-build="Concept" data-year="2015" data-cat="euro">
-  <img src="./paradoxp1.png" data-name="Toyota Supra" data-build="Track" data-year="?" data-cat="eropa">
-   <img src="./rxparad.jpeg" data-name="mazda" data-build="street drift" data-year="1998" data-cat="jdm">
-    <img src="./488pista.png" data-name="488pista" data-build="Track" data-year="1998" data-cat="jdm">
+<div class="drift-gallery">
+<img src="./s15parad.jpeg">
+<img src="./supraparadox.png">
+<img src="./aeparad.png">
+<img src="./gtrparad.jpeg">
+<img src="./rxparad.jpeg">
+<img src="./parad34.jpeg">
+<img src="./miata parad.jpeg">
+<img src="./porshe 911parad.png">
+<img src="./f40parad.png">
+<img src="./nsxp.png">
+<img src="./sfparad.png">
+<img src="./r8parad.png">
+<img src="./fairparad.png">
+<img src="./488pista.png">
+<img src="./rx8png.png">
 </div>
-
-<div class="progress"><div id="bar"></div></div>
-<div class="dots" id="dots"></div>
-
-</section>
-<section class="content-section" id="coreIdeas">
-  <div class="text"><h1>PARADOX CORE IDEAS</h1></div>
-  <p>Paradox Drift adalah filosofi modifikasi mobil ekstrem...</p>
 </section>
 
+<section id="coreIdeas">
+<h1>PARADOX CORE IDEAS</h1>
+<p>
+PARADOX adalah perlawanan terhadap standar.<br><br>
+Anti normal. Anti simetri. Tidak dibuat untuk semua orang.
+</p>
+</section>
 
 <footer>
- <p>© 2026 PARADOX DRIFT — NOT NORMAL. NOT SLOW.</p>
+<p>© 2026 PARADOX DRIFT — NOT NORMAL. NOT SLOW.</p>
 </footer>
 
 <div id="imgModal">
- <div class="nav-btn left">&#10094;</div>
- <img id="modalImg">
- <div class="nav-btn right">&#10095;</div>
- <div id="counter"></div>
- <div id="imgTitle"></div>
- <div id="carDetail"></div>
+<div class="nav-btn left">&#10094;</div>
+<img id="modalImg">
+<div class="nav-btn right">&#10095;</div>
+<div id="imgTitle"></div>
 </div>
 
-<div id="swipeHint">← swipe →</div>
-
 <script>
+const loader=document.getElementById("loader");
 window.onload=()=>setTimeout(()=>loader.style.display="none",1200);
 
-const h=document.documentElement;
-window.onscroll=()=>scrollBar.style.width=
-(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+"%";
-
-if(localStorage.swipe)swipeHint.remove();
-else setTimeout(()=>{swipeHint.remove();localStorage.swipe=1},3500);
-
-const carousel=document.getElementById("carousel");
-const imgs=[...carousel.children];
-const dots=document.getElementById("dots");
-const bar=document.getElementById("bar");
-
-imgs.forEach((_,i)=>{
- let d=document.createElement("span");
- dots.appendChild(d);
-});
-
-let index=0;
-function update(){
- imgs.forEach(i=>i.classList.remove("active"));
- imgs[index].classList.add("active");
- [...dots.children].forEach(d=>d.classList.remove("active"));
- dots.children[index].classList.add("active");
- bar.style.width=((index+1)/imgs.length*100)+"%";
-}
-update();
-
-function next(){
- index=(index+1)%imgs.length;
- carousel.scrollTo({left:imgs[index].offsetLeft-40,behavior:"smooth"});
- update();
-}
-
-let auto=setInterval(next,3500);
-carousel.onmouseenter=()=>clearInterval(auto);
-carousel.onmouseleave=()=>auto=setInterval(next,3500);
-
-document.querySelectorAll(".filter button").forEach(b=>{
- b.onclick=()=>imgs.forEach(i=>{
-  i.style.display=
-  b.dataset.f=="all"||i.dataset.cat==b.dataset.f?"":"none";
- });
-});
-
+const imgs=[...document.querySelectorAll(".drift-gallery img")];
 const modal=document.getElementById("imgModal");
 const modalImg=document.getElementById("modalImg");
+const title=document.getElementById("imgTitle");
+const left=document.querySelector(".left");
+const right=document.querySelector(".right");
+let i=0;
 
 function show(n){
- index=(n+imgs.length)%imgs.length;
- modalImg.src=imgs[index].src;
- imgTitle.textContent=imgs[index].dataset.name;
- counter.textContent=`${index+1} / ${imgs.length}`;
- carDetail.innerHTML=`<b>${imgs[index].dataset.name}</b> — ${imgs[index].dataset.build}<br><small>Low grip. High angle. No compromise.</small>`;
- update();
+if(n<0)n=imgs.length-1;
+if(n>=imgs.length)n=0;
+i=n;
+modalImg.src=imgs[i].src;
+title.textContent=imgs[i].src.split("/").pop();
 }
 
-imgs.forEach((img,i)=>img.onclick=()=>{
- modal.style.display="flex";
- show(i);
-});
-
-document.querySelector(".left").onclick=e=>{e.stopPropagation();show(index-1)};
-document.querySelector(".right").onclick=e=>{e.stopPropagation();show(index+1)};
+imgs.forEach((img,idx)=>img.onclick=()=>{modal.style.display="flex";show(idx)});
+left.onclick=e=>{e.stopPropagation();show(i-1)};
+right.onclick=e=>{e.stopPropagation();show(i+1)};
 modal.onclick=e=>{if(e.target===modal)modal.style.display="none"};
-
-showroom.onclick=()=>{
- window.scrollTo({top:carousel.offsetTop,behavior:"smooth"});
- auto=setInterval(next,1800);
-};
 </script>
 
 </body>
