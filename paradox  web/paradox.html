@@ -8,143 +8,151 @@
   <link rel="icon" type="image/png" href="./logoparadox-removebg-preview.png" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet"/>
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:"Orbitron",sans-serif}
-    body{background:#0b0b0b;color:#fff;padding-bottom:80px}
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Orbitron",sans-serif}
+body{background:#0b0b0b;color:#fff;padding-bottom:80px}
 
-    /* LOADING */
-    #loader{
-      position:fixed;
-      inset:0;
-      background:#000;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      z-index:10000
-    }
-    #loader h1{color:#ff2e2e;letter-spacing:4px}
-    #loader span{
-      margin-top:15px;width:120px;height:4px;background:#222;overflow:hidden
-    }
-    #loader span::after{
-      content:"";display:block;height:100%;width:40%;
-      background:#ff2e2e;animation:load 1.2s infinite
-    }
-    @keyframes load{
-      from{transform:translateX(-100%)}
-      to{transform:translateX(250%)}
-    }
+/* LOADER */
+#loader{
+  position:fixed;inset:0;background:#000;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  z-index:10000
+}
+#loader h1{color:#ff2e2e;letter-spacing:4px}
+#loader span{margin-top:15px;width:140px;height:4px;background:#222;overflow:hidden}
+#loader span::after{
+  content:"";display:block;height:100%;width:40%;
+  background:#ff2e2e;animation:load 1s infinite
+}
+@keyframes load{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
 
-    nav{
-      background:#111;display:flex;justify-content:space-between;
-      align-items:center;padding:15px 50px;
-      position:sticky;top:0;z-index:1000
-    }
-    .logo-img{width:50px}
-    .nav-links{list-style:none;display:flex;gap:25px}
-    .nav-links a{color:#fff;font-weight:bold;text-decoration:none}
-    .nav-links a:hover{color:#ff2e2e}
+nav{
+  background:#111;display:flex;justify-content:space-between;
+  align-items:center;padding:15px 50px;
+  position:sticky;top:0;z-index:1000
+}
+.logo-img{width:50px;filter:drop-shadow(0 0 10px #ff2e2e)}
+.nav-links{list-style:none;display:flex;gap:25px}
+.nav-links a{color:#fff;font-weight:bold;text-decoration:none}
+.nav-links a:hover{color:#ff2e2e}
 
-    .content-section{text-align:center;padding:40px 20px}
-    .hero h1{color:#ff2e2e;margin-bottom:15px}
-    .hero p{max-width:700px;margin:auto;opacity:.9}
+.content-section{text-align:center;padding:60px 20px}
+.hero h1{
+  color:#ff2e2e;
+  margin-bottom:15px;
+  font-size:42px;
+  letter-spacing:4px;
+}
+.hero img{
+  margin:25px 0;
+  filter:drop-shadow(0 0 30px #ff2e2e);
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+.hero p{max-width:700px;margin:auto;opacity:.9}
 
-    .marquee-container{
-      background:#ff2e2e;padding:10px;margin-top:40px;overflow:hidden
-    }
-    .teks-gerak{
-      white-space:nowrap;display:inline-block;
-      animation:marquee 15s linear infinite;
-      color:#000;font-weight:bold
-    }
-    @keyframes marquee{
-      from{transform:translateX(100%)}
-      to{transform:translateX(-100%)}
-    }
+.marquee-container{
+  background:#ff2e2e;
+  padding:12px;
+  margin-top:40px;
+  overflow:hidden
+}
+.teks-gerak{
+  white-space:nowrap;
+  display:inline-block;
+  animation:marquee 14s linear infinite;
+  color:#000;
+  font-weight:bold;
+  letter-spacing:2px
+}
+@keyframes marquee{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
 
-    .text{margin:70px 0 30px}
-    .text h1{color:#ff2e2e;letter-spacing:3px}
+.text{margin:80px 0 30px}
+.text h1{
+  color:#ff2e2e;
+  letter-spacing:3px;
+  font-size:32px
+}
 
-    .drift-gallery{
-      display:flex;gap:15px;flex-wrap:wrap;
-      justify-content:center;
-      opacity:0;transform:translateY(60px);
-      transition:.8s
-    }
-    .drift-gallery.is-visible{
-      opacity:1;transform:none
-    }
-    .drift-gallery img{
-      width:220px;border-radius:10px;
-      cursor:pointer;transition:.4s
-    }
-    .drift-gallery img:hover{
-      transform:scale(1.1);
-      box-shadow:0 0 25px #ff2e2e
-    }
+/* GALERI */
+.drift-gallery{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  justify-content:center;
+  opacity:1;              /* FIX UTAMA */
+  transform:none;         /* FIX UTAMA */
+}
+.drift-gallery img{
+  width:220px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.4s;
+  filter:brightness(.9)
+}
+.drift-gallery img:hover{
+  transform:scale(1.12);
+  filter:brightness(1.1);
+  box-shadow:0 0 30px #ff2e2e
+}
 
-    .specs{
-      display:flex;gap:20px;flex-wrap:wrap;
-      justify-content:center
-    }
-    .spec-card{
-      background:#111;border:2px solid #ff2e2e;
-      padding:20px;border-radius:10px;width:220px
-    }
-    .spec-card h3{color:#ff2e2e;margin-bottom:10px}
+#coreIdeas p{
+  max-width:700px;
+  margin:12px auto;
+  line-height:1.7;
+  opacity:.9
+}
 
-    .cta{margin-top:40px}
-    .cta a{
-      display:inline-block;padding:12px 30px;
-      border:2px solid #ff2e2e;color:#ff2e2e;
-      text-decoration:none;transition:.3s
-    }
-    .cta a:hover{background:#ff2e2e;color:#000}
+footer{
+  background:#111;
+  text-align:center;
+  padding:30px;
+  margin-top:100px;
+  border-top:2px solid #ff2e2e
+}
 
-    footer{
-      background:#111;text-align:center;
-      padding:30px;margin-top:80px;
-      border-top:2px solid #ff2e2e
-    }
-    footer p{opacity:.7;font-size:14px}
+/* MODAL */
+#imgModal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
+}
+#imgModal img{
+  max-width:90%;
+  max-height:90%;
+  border:3px solid #ff2e2e;
+  border-radius:14px;
+  box-shadow:0 0 40px #ff2e2e;
+}
+.nav-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:60px;
+  color:#ff2e2e;
+  cursor:pointer;
+  padding:20px;
+}
+.nav-btn.left{left:20px}
+.nav-btn.right{right:20px}
 
-    /* MODAL IMAGE VIEW */
-    #imgModal{
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.95);
-      justify-content:center;
-      align-items:center;
-      z-index:10000;
-    }
-    #imgModal img{
-      max-width:90%;
-      max-height:90%;
-      border:3px solid #ff2e2e;
-      border-radius:12px;
-      box-shadow:0 0 30px #ff2e2e;
-    }
-
-    /* PARADOX CORE IDEAS LONG TEXT */
-    #coreIdeas p{
-      max-width:700px;
-      margin:auto;
-      margin-top:10px;
-      line-height:1.6;
-      opacity:0.9;
-    }
-    #coreIdeas ul{
-      max-width:700px;
-      margin:auto;
-      text-align:left;
-      margin-top:10px;
-      line-height:1.6;
-      opacity:0.9;
-      list-style:disc inside;
-    }
-  </style>
+#imgTitle{
+  position:absolute;
+  bottom:40px;
+  color:#fff;
+  font-size:18px;
+  letter-spacing:2px;
+  opacity:.8
+}
+</style>
 </head>
 
 <body>
@@ -165,7 +173,7 @@
 </nav>
 
 <section class="hero content-section">
-  <h1>PROJECT PARADOX DRIFT</h1>
+  <h1>PARADOX DRIFT</h1>
   <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" width="380">
   <p>Konsep modifikasi ekstrem. Anti normal. Anti arus.</p>
 </section>
@@ -183,61 +191,73 @@
     <img src="./gtrparad.jpeg">
     <img src="./rxparad.jpeg">
     <img src="./parad34.jpeg">
-    <img src="./paradoxp1.png" alt="">
-    <img src="./miata parad.jpeg" alt="">
-    <img src="./f40parad.png" alt="">
-    <img src="s15parad.jpeg" alt="">
-    <img src="./supraparadox.png" alt="">
-    <img src="./porshe 911parad.png" alt="">
+    <img src="./paradoxp1.png">
+    <img src="./miata parad.jpeg">
+    <img src="./f40parad.png">
+    <img src="s15parad.jpeg">
+    <img src="./supraparadox.png">
+    <img src="./porshe 911parad.png">
+    <img src="./aeparad.png">
+    <img src="./grparad.png">
+    <img src="./nsxp.png">
+    <img src="./sfparad.png" alt="">
+    <img src="./r8parad.png" alt="">
+    <img src="./fairparad.png" alt="">
+    <img src="./f4parad.png" alt="">
+    <img src="./488pista.png" alt="">
+  
   </div>
 </section>
 
 <section class="content-section" id="coreIdeas">
   <div class="text"><h1>PARADOX CORE IDEAS</h1></div>
-  <p>Paradox Drift adalah filosofi modifikasi mobil ekstrem yang menolak batasan konvensional. Setiap kendaraan adalah karakter unik yang menceritakan keberanian dan kreatifitas tanpa kompromi.</p>
-  <p>Fokus kami bukan hanya pada performa, tapi identitas. Mobil di sini bukan sekadar kendaraan — mereka adalah karya seni liar yang menolak aturan mainstream.</p>
-  <ul>
-    <li>Karakter liar: Setiap desain menonjolkan kepribadian yang kuat dan berbeda.</li>
-    <li>Body brutal: Modifikasi yang agresif, berani, dan eye-catching.</li>
-    <li>Anti mainstream: Tidak mengikuti tren biasa, selalu mengejutkan mata dan pikiran.</li>
-    <li>Eksperimen ekstrem: Setiap mobil adalah laboratorium ide dan estetika.</li>
-    <li>Koneksi komunitas: Membentuk budaya drift yang unik dan berani berbeda.</li>
-  </ul>
-  <p>Dengan Paradox Drift, setiap mobil menjadi simbol ekspresi diri, kekuatan karakter, dan kebebasan kreatif yang tidak pernah kompromi.</p>
+  <p>Paradox Drift adalah filosofi modifikasi mobil ekstrem...</p>
 </section>
 
 <footer>
   <p>© 2026 PARADOX DRIFT — NOT NORMAL. NOT SLOW.</p>
 </footer>
 
-<!-- IMAGE MODAL -->
-<div id="imgModal" onclick="this.style.display='none'">
-  <img id="modalImg" src="">
+<div id="imgModal">
+  <div class="nav-btn left">&#10094;</div>
+  <img id="modalImg">
+  <div class="nav-btn right">&#10095;</div>
+  <div id="imgTitle"></div>
 </div>
 
 <script>
-  // LOADING 10 DETIK
-  setTimeout(()=>{document.getElementById("loader").style.display="none"},10000);
+const loader = document.getElementById("loader");
+window.addEventListener("load", ()=>{
+  setTimeout(()=>loader.style.display="none",1200);
+});
 
-  // ANIMASI GALLERY SAAT SCROLL
-  const drift=document.getElementById("driftSection");
-  window.addEventListener("scroll",()=>{
-    if(drift.getBoundingClientRect().top<innerHeight-100){
-      drift.classList.add("is-visible");
-    }
-  });
+const images=document.querySelectorAll(".drift-gallery img");
+const modal=document.getElementById("imgModal");
+const modalImg=document.getElementById("modalImg");
+const title=document.getElementById("imgTitle");
+const left=document.querySelector(".nav-btn.left");
+const right=document.querySelector(".nav-btn.right");
 
-  // CLICK TO ENLARGE IMAGE
-  const images = document.querySelectorAll('.drift-gallery img');
-  const modal = document.getElementById('imgModal');
-  const modalImg = document.getElementById('modalImg');
+let i=0;
 
-  images.forEach(img=>{
-    img.addEventListener('click', ()=>{
-      modal.style.display = 'flex';
-      modalImg.src = img.src;
-    });
-  });
+function show(n){
+  if(n<0)n=images.length-1;
+  if(n>=images.length)n=0;
+  i=n;
+  modalImg.src=images[i].src;
+  title.textContent=images[i].src.split("/").pop().split(".")[0];
+}
+
+images.forEach((img,idx)=>{
+  img.onclick=()=>{
+    modal.style.display="flex";
+    show(idx);
+  }
+});
+
+left.onclick=e=>{e.stopPropagation();show(i-1)}
+right.onclick=e=>{e.stopPropagation();show(i+1)}
+modal.onclick=e=>{if(e.target===modal)modal.style.display="none"}
 </script>
 
 </body>
