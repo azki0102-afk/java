@@ -116,7 +116,7 @@ let K = 8;
 K--;
 
 let jhasil 
-
+                
 console.log("hasil nya adalah" + J)
 
 console.log("hasil nya adalah" + K )
