@@ -1,263 +1,215 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PARADOX DRIFT</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PARADOX DRIFT</title>
 
-  <link rel="icon" type="image/png" href="./logoparadox-removebg-preview.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="./logoparadox-removebg-preview.png" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet"/>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Orbitron",sans-serif}
-body{background:#0b0b0b;color:#fff;padding-bottom:80px}
+body{background:#000;color:#fff;overflow-x:hidden}
 
-/* LOADER */
+/* ===== BACKGROUND VIDEO ===== */
+.bg-video{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+  filter:brightness(.25) contrast(1.2);
+}
+
+/* overlay */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center,#00000088 20%,#000 80%);
+  z-index:-1;
+}
+
+/* ===== LOADER GLITCH ===== */
 #loader{
   position:fixed;inset:0;background:#000;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  z-index:10000
+  display:flex;align-items:center;justify-content:center;
+  z-index:10000;
+  flex-direction:column;
 }
-#loader h1{color:#ff2e2e;letter-spacing:4px}
-#loader span{margin-top:15px;width:140px;height:4px;background:#222;overflow:hidden}
-#loader span::after{
-  content:"";display:block;height:100%;width:40%;
-  background:#ff2e2e;animation:load 1s infinite
+#loader h1{
+  font-size:42px;
+  color:#ff2e2e;
+  position:relative;
+  animation:glitch 1s infinite;
 }
-@keyframes load{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+@keyframes glitch{
+  0%{text-shadow:2px 0 red,-2px 0 blue}
+  50%{text-shadow:-2px 0 red,2px 0 blue}
+  100%{text-shadow:2px 0 red,-2px 0 blue}
+}
 
+/* NAV */
 nav{
-  background:#111;display:flex;justify-content:space-between;
-  align-items:center;padding:15px 50px;
-  position:sticky;top:0;z-index:1000
+  background:#000;
+  display:flex;justify-content:space-between;
+  align-items:center;padding:15px 60px;
+  position:sticky;top:0;z-index:1000;
+  border-bottom:1px solid #ff2e2e;
 }
 .logo-img{width:50px;filter:drop-shadow(0 0 10px #ff2e2e)}
 .nav-links{list-style:none;display:flex;gap:25px}
-.nav-links a{color:#fff;font-weight:bold;text-decoration:none}
+.nav-links a{color:#fff;text-decoration:none;font-weight:600}
 .nav-links a:hover{color:#ff2e2e}
 
-.content-section{text-align:center;padding:60px 20px}
+/* HERO */
+.hero{
+  text-align:center;
+  padding:120px 20px 80px;
+}
 .hero h1{
+  font-size:58px;
   color:#ff2e2e;
-  margin-bottom:15px;
-  font-size:42px;
-  letter-spacing:4px;
+  letter-spacing:6px;
 }
-.hero img{
-  margin:25px 0;
-  filter:drop-shadow(0 0 30px #ff2e2e);
-  animation:float 4s ease-in-out infinite;
+.hero p{
+  margin-top:20px;
+  opacity:.85;
+  font-size:18px;
 }
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-.hero p{max-width:700px;margin:auto;opacity:.9}
 
-.marquee-container{
-  background:#ff2e2e;
-  padding:12px;
-  margin-top:40px;
-  overflow:hidden
+/* SECTION */
+.content-section{
+  text-align:center;
+  padding:100px 20px;
 }
-.teks-gerak{
-  white-space:nowrap;
-  display:inline-block;
-  animation:marquee 14s linear infinite;
-  color:#000;
-  font-weight:bold;
-  letter-spacing:2px
-}
-@keyframes marquee{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
-
-.text{margin:80px 0 30px}
 .text h1{
   color:#ff2e2e;
-  letter-spacing:3px;
-  font-size:32px
+  letter-spacing:4px;
+  font-size:32px;
+  margin-bottom:40px;
 }
 
-/* GALERI */
-.drift-gallery{
+/* TEAM */
+.team-grid{
   display:flex;
-  gap:18px;
   flex-wrap:wrap;
   justify-content:center;
-  opacity:1;              /* FIX UTAMA */
-  transform:none;         /* FIX UTAMA */
+  gap:30px;
 }
-.drift-gallery img{
-  width:220px;
-  border-radius:12px;
-  cursor:pointer;
-  transition:.4s;
-  filter:brightness(.9)
-}
-.drift-gallery img:hover{
-  transform:scale(1.12);
-  filter:brightness(1.1);
-  box-shadow:0 0 30px #ff2e2e
-}
-
-#coreIdeas p{
-  max-width:700px;
-  margin:12px auto;
-  line-height:1.7;
-  opacity:.9
-}
-
-footer{
+.team-card{
+  width:260px;
   background:#111;
-  text-align:center;
-  padding:30px;
-  margin-top:100px;
-  border-top:2px solid #ff2e2e
+  padding:25px;
+  border:1px solid #ff2e2e;
+  border-radius:12px;
+  transition:.4s;
+}
+.team-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px #ff2e2e;
+}
+.team-card img{
+  width:100%;
+  border-radius:8px;
+  margin-bottom:15px;
 }
 
-/* MODAL */
-#imgModal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.95);
+/* SPONSOR */
+.sponsor-grid{
+  display:flex;
+  flex-wrap:wrap;
   justify-content:center;
-  align-items:center;
-  z-index:10000;
+  gap:40px;
 }
-#imgModal img{
-  max-width:90%;
-  max-height:90%;
-  border:3px solid #ff2e2e;
-  border-radius:14px;
-  box-shadow:0 0 40px #ff2e2e;
+.sponsor-grid img{
+  width:140px;
+  filter:grayscale(1);
+  opacity:.6;
+  transition:.3s;
 }
-.nav-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:60px;
-  color:#ff2e2e;
-  cursor:pointer;
-  padding:20px;
+.sponsor-grid img:hover{
+  filter:grayscale(0);
+  opacity:1;
+  transform:scale(1.1);
 }
-.nav-btn.left{left:20px}
-.nav-btn.right{right:20px}
 
-#imgTitle{
-  position:absolute;
-  bottom:40px;
-  color:#fff;
-  font-size:18px;
-  letter-spacing:2px;
-  opacity:.8
+/* FOOTER */
+footer{
+  background:#000;
+  text-align:center;
+  padding:40px;
+  border-top:1px solid #ff2e2e;
+  margin-top:100px;
 }
 </style>
 </head>
 
 <body>
 
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop class="bg-video">
+  <source src="https://cdn.coverr.co/videos/coverr-drifting-car-1572/1080p.mp4" type="video/mp4">
+</video>
+
+<!-- LOADER -->
 <div id="loader">
   <h1>PARADOX DRIFT</h1>
-  <span></span>
 </div>
 
 <nav>
   <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" class="logo-img">
   <ul class="nav-links">
     <li><a href="#">Home</a></li>
-    <li><a href="#">Cars</a></li>
-    <li><a href="#">Gallery</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="#">Team</a></li>
+    <li><a href="#">Sponsors</a></li>
   </ul>
 </nav>
 
-<section class="hero content-section">
+<section class="hero">
   <h1>PARADOX DRIFT</h1>
-  <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" width="380">
-  <p>Konsep modifikasi ekstrem. Anti normal. Anti arus.</p>
+  <p>NOT NORMAL. NOT SLOW. BUILT FOR DOMINATION.</p>
 </section>
 
-<div class="marquee-container">
-  <span class="teks-gerak">
-    PROJECT PARADOX DRIFT — EXTREME DRIFT • CUSTOM SKETCH • STREET CULTURE
-  </span>
-</div>
-
+<!-- TEAM -->
 <section class="content-section">
-  <div class="text"><h1>Sketsa Model Cars</h1></div>
-  <div class="drift-gallery" id="driftSection">
-    <img src="./paradoxdriftmodels.png">
-    <img src="./gtrparad.jpeg">
-    <img src="./rxparad.jpeg">
-    <img src="./parad34.jpeg">
-    <img src="./paradoxp1.png">
-    <img src="./miata parad.jpeg">
-    <img src="./f40parad.png">
-    <img src="s15parad.jpeg">
-    <img src="./supraparadox.png">
-    <img src="./porshe 911parad.png">
-    <img src="./aeparad.png">
-    <img src="./grparad.png">
-    <img src="./nsxp.png">
-    <img src="./sfparad.png" alt="">
-    <img src="./r8parad.png" alt="">
-    <img src="./fairparad.png" alt="">
-    <img src="./f4parad.png" alt="">
-    <img src="./488pista.png" alt="">
-  
+  <div class="text"><h1>TEAM & DRIVERS</h1></div>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1549921296-3a6b4b6a63a5?q=80&w=800" />
+      <h3>AKIRA V</h3>
+      <p>Lead Driver — Precision Drift Specialist</p>
+    </div>
+    <div class="team-card">
+      <img src="https://images.unsplash.com/photo-1520975922323-6a32f3c9f4c6?q=80&w=800" />
+      <h3>RYO KAZE</h3>
+      <p>Technical Builder — Aero & Power Engineer</p>
+    </div>
   </div>
 </section>
 
-<section class="content-section" id="coreIdeas">
-  <div class="text"><h1>PARADOX CORE IDEAS</h1></div>
-  <p>Paradox Drift adalah filosofi modifikasi mobil ekstrem...</p>
+<!-- SPONSOR -->
+<section class="content-section">
+  <div class="text"><h1>SPONSORS</h1></div>
+  <div class="sponsor-grid">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Toyota_logo.png">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Brembo_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Bridgestone_logo.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/HKS_logo.svg">
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 PARADOX DRIFT — NOT NORMAL. NOT SLOW.</p>
+  <p>© 2026 PARADOX DRIFT — UNDERGROUND MOTORSPORT</p>
 </footer>
 
-<div id="imgModal">
-  <div class="nav-btn left">&#10094;</div>
-  <img id="modalImg">
-  <div class="nav-btn right">&#10095;</div>
-  <div id="imgTitle"></div>
-</div>
-
 <script>
-const loader = document.getElementById("loader");
-window.addEventListener("load", ()=>{
-  setTimeout(()=>loader.style.display="none",1200);
+const loader=document.getElementById("loader");
+window.addEventListener("load",()=>{
+  setTimeout(()=>loader.style.display="none",1500);
 });
-
-const images=document.querySelectorAll(".drift-gallery img");
-const modal=document.getElementById("imgModal");
-const modalImg=document.getElementById("modalImg");
-const title=document.getElementById("imgTitle");
-const left=document.querySelector(".nav-btn.left");
-const right=document.querySelector(".nav-btn.right");
-
-let i=0;
-
-function show(n){
-  if(n<0)n=images.length-1;
-  if(n>=images.length)n=0;
-  i=n;
-  modalImg.src=images[i].src;
-  title.textContent=images[i].src.split("/").pop().split(".")[0];
-}
-
-images.forEach((img,idx)=>{
-  img.onclick=()=>{
-    modal.style.display="flex";
-    show(idx);
-  }
-});
-
-left.onclick=e=>{e.stopPropagation();show(i-1)}
-right.onclick=e=>{e.stopPropagation();show(i+1)}
-modal.onclick=e=>{if(e.target===modal)modal.style.display="none"}
 </script>
 
 </body>

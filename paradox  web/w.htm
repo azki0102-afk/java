@@ -58,12 +58,43 @@ width:220px;border-radius:16px;cursor:pointer;
 scroll-snap-align:center;transition:.4s;
 filter:brightness(.75)
 }
-.drift-gallery img:hover{transform:scale(1.15);filter:brightness(1);box-shadow:0 0 40px #ff2e2e}
+.drift-gallery img:hover{
+transform:scale(1.15);
+filter:brightness(1);
+box-shadow:0 0 40px #ff2e2e
+}
 
 /* core ideas */
 #coreIdeas{text-align:center;padding:90px 20px;max-width:900px;margin:auto}
 #coreIdeas h1{color:#ff2e2e;letter-spacing:4px;font-size:36px;margin-bottom:30px}
 #coreIdeas p{color:#ccc;line-height:1.9;font-size:14px}
+
+/* BLIND SECTION */
+.blind{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:120px 20px;
+background:#000;
+border-top:1px solid #1a1a1a;
+border-bottom:1px solid #1a1a1a;
+overflow:hidden;
+}
+
+.blind img{
+width:220px;
+border-radius:20px;
+cursor:pointer;
+transition:0.5s ease;
+filter:brightness(.6);
+transform:scale(1);
+}
+
+.blind img.active{
+transform:scale(1.4);
+filter:brightness(1);
+box-shadow:0 0 80px #ff2e2e;
+}
 
 /* footer */
 footer{background:#111;text-align:center;padding:30px;margin-top:80px;border-top:2px solid #ff2e2e}
@@ -111,21 +142,25 @@ footer{background:#111;text-align:center;padding:30px;margin-top:80px;border-top
 </div>
 
 <div class="drift-gallery">
-<img src="./s15parad.jpeg">
+<img src="./parad15.png">
 <img src="./supraparadox.png">
 <img src="./aeparad.png">
-<img src="./gtrparad.jpeg">
+<img src="./parad.png">
 <img src="./rxparad.jpeg">
 <img src="./parad34.jpeg">
 <img src="./miata parad.jpeg">
 <img src="./porshe 911parad.png">
-<img src="./f40parad.png">
+<img src="./gtparad.png">
 <img src="./nsxp.png">
 <img src="./sfparad.png">
 <img src="./r8parad.png">
 <img src="./fairparad.png">
 <img src="./488pista.png">
 <img src="./rx8png.png">
+<img src="./s2000parad.png">
+<img src="./revuelto.png">
+<img src="./mieclipese parada.png">
+<img src="./paradogtrr34.png">
 </div>
 </section>
 
@@ -136,6 +171,10 @@ PARADOX adalah perlawanan terhadap standar.<br><br>
 Anti normal. Anti simetri. Tidak dibuat untuk semua orang.
 </p>
 </section>
+
+<div class="blind">
+<img src="./blindparad.png">
+</div>
 
 <footer>
 <p>© 2026 PARADOX DRIFT — NOT NORMAL. NOT SLOW.</p>
@@ -172,6 +211,12 @@ imgs.forEach((img,idx)=>img.onclick=()=>{modal.style.display="flex";show(idx)});
 left.onclick=e=>{e.stopPropagation();show(i-1)};
 right.onclick=e=>{e.stopPropagation();show(i+1)};
 modal.onclick=e=>{if(e.target===modal)modal.style.display="none"};
+
+/* BLIND CLICK TOGGLE */
+const blindImg=document.querySelector(".blind img");
+blindImg.addEventListener("click",function(){
+blindImg.classList.toggle("active");
+});
 </script>
 
 </body>
