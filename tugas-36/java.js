@@ -9,7 +9,7 @@ if (mtk >= 91 || ipa >= 91 || ips >= 91) {
 }
 
 let ipa2 = 81;
-let ips2 = 91;
+let ips2 = 91; 
 let mtk2 = 90;
 
 if (ipa2 >= 81 || ips2 >= 91 || mtk2 >= 90) {
