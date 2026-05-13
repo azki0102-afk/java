@@ -1,0 +1,42 @@
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 2px solid black;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.kotak1 {
+  background-color: rgb(56, 56, 143);
+}
+
+.kotak2 {
+  background-color: green;
+}
+
+.kotak3 {
+  background-color: yellow;
+}
+
+.succes {
+  background-color: rgb(255, 255, 255);
+}
+
+.texta {
+  width: 20%;
+  height: 20%;
+  cursor: pointer;
+  transition: 0.3;
+}
+
+.text {
+  text-transform: color rgb(250, 249, 249);
+}
+
+.text {
+  background-color: rgb(14, 12, 12);
+  text-decoration: aliceblue;
+  text-transform: white;
+}

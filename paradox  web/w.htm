@@ -40,10 +40,12 @@ nav{background:#111;display:flex;justify-content:space-between;align-items:cente
 .hero img{width:380px;margin:25px 0;filter:drop-shadow(0 0 30px #ff2e2e);animation:float 4s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-12px)}}
 
-/* marquee */
-.marquee-container{background:#ff2e2e;padding:12px;overflow:hidden}
-.teks-gerak{white-space:nowrap;display:inline-block;animation:marquee 14s linear infinite;color:#000;font-weight:bold;letter-spacing:2px}
-@keyframes marquee{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+/* sketch */
+.drift-gallery img,
+.hero img,
+.blind img{
+filter: grayscale(100%) contrast(130%) brightness(.85);
+}
 
 /* gallery */
 .gallery-wrap{padding:60px 10px}
@@ -60,16 +62,10 @@ filter:brightness(.75)
 }
 .drift-gallery img:hover{
 transform:scale(1.15);
-filter:brightness(1);
 box-shadow:0 0 40px #ff2e2e
 }
 
-/* core ideas */
-#coreIdeas{text-align:center;padding:90px 20px;max-width:900px;margin:auto}
-#coreIdeas h1{color:#ff2e2e;letter-spacing:4px;font-size:36px;margin-bottom:30px}
-#coreIdeas p{color:#ccc;line-height:1.9;font-size:14px}
-
-/* BLIND SECTION */
+/* blind */
 .blind{
 display:flex;
 justify-content:center;
@@ -78,7 +74,7 @@ padding:120px 20px;
 background:#000;
 border-top:1px solid #1a1a1a;
 border-bottom:1px solid #1a1a1a;
-overflow:hidden;
+gap: 40px;
 }
 
 .blind img{
@@ -86,26 +82,67 @@ width:220px;
 border-radius:20px;
 cursor:pointer;
 transition:0.5s ease;
-filter:brightness(.6);
-transform:scale(1);
 }
 
-.blind img.active{
-transform:scale(1.4);
-filter:brightness(1);
-box-shadow:0 0 80px #ff2e2e;
+/* CLICK SCALE */
+.click-zoom{
+animation:clickZoom .35s ease forwards;
+position:relative;
+z-index:2000;
 }
 
-/* footer */
-footer{background:#111;text-align:center;padding:30px;margin-top:80px;border-top:2px solid #ff2e2e}
+@keyframes clickZoom{
+0%{transform:scale(1)}
+100%{transform:scale(1.35)}
+}
+
+/* GLITCH */
+.glitch{
+animation:glitchFlash .3s ease;
+}
+
+@keyframes glitchFlash{
+0%{filter:drop-shadow(0 0 0 red)}
+25%{filter:drop-shadow(6px 0 0 red)}
+50%{filter:drop-shadow(-6px 0 0 #ff2e2e)}
+75%{filter:drop-shadow(4px 0 0 red)}
+100%{filter:drop-shadow(0 0 0 red)}
+}
 
 /* modal */
-#imgModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);justify-content:center;align-items:center;z-index:10000}
-#imgModal img{max-width:90%;max-height:90%;border:3px solid #ff2e2e;border-radius:14px;box-shadow:0 0 40px #ff2e2e}
-.nav-btn{position:absolute;top:50%;transform:translateY(-50%);font-size:60px;color:#ff2e2e;cursor:pointer;padding:20px}
+#imgModal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+justify-content:center;
+align-items:center;
+z-index:10000
+}
+#imgModal img{
+max-width:90%;
+max-height:90%;
+border:3px solid #ff2e2e;
+border-radius:14px;
+box-shadow:0 0 40px #ff2e2e
+}
+.nav-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:60px;
+color:#ff2e2e;
+cursor:pointer;
+padding:20px
+}
 .nav-btn.left{left:20px}
 .nav-btn.right{right:20px}
-#imgTitle{position:absolute;bottom:40px;font-size:18px;letter-spacing:2px}
+#imgTitle{
+position:absolute;
+bottom:40px;
+font-size:18px;
+letter-spacing:2px
+}
 </style>
 </head>
 
@@ -129,56 +166,32 @@ footer{background:#111;text-align:center;padding:30px;margin-top:80px;border-top
 <p>Konsep modifikasi ekstrem. Anti normal. Anti arus.</p>
 </section>
 
-<div class="marquee-container">
-<span class="teks-gerak">PROJECT PARADOX DRIFT — EXTREME DRIFT • CUSTOM SKETCH • STREET CULTURE</span>
-</div>
-
 <section class="gallery-wrap">
-<div class="filter">
-<button>ALL</button>
-<button>JDM</button>
-<button>EURO</button>
-<button>CONCEPT</button>
-</div>
-
 <div class="drift-gallery">
 <img src="./parad15.png">
-<img src="./supraparadox.png">
-<img src="./aeparad.png">
-<img src="./parad.png">
-<img src="./rxparad.jpeg">
-<img src="./parad34.jpeg">
 <img src="./miata parad.jpeg">
-<img src="./porshe 911parad.png">
-<img src="./gtparad.png">
-<img src="./nsxp.png">
-<img src="./sfparad.png">
-<img src="./r8parad.png">
-<img src="./fairparad.png">
-<img src="./488pista.png">
-<img src="./rx8png.png">
-<img src="./s2000parad.png">
-<img src="./revuelto.png">
 <img src="./mieclipese parada.png">
-<img src="./paradogtrr34.png">
+<img src="./gtrparad.jpeg">
+<img src="./rxparad.jpeg">
+<img src="./r8parad.png">
+<img src="./180parad.png">
+<img src="./rxsvpd.png" alt="">
+<img src="./aeparad.png">
+<img src="./s2000parad.png">
+<img src="./f40parad.png">
+<img src="./r8parad.png">
+<img src="./porshe 911parad.png">
+<img src="./revuelto.png">
+<img src="./sfparad.png">
 </div>
-</section>
-
-<section id="coreIdeas">
-<h1>PARADOX CORE IDEAS</h1>
-<p>
-PARADOX adalah perlawanan terhadap standar.<br><br>
-Anti normal. Anti simetri. Tidak dibuat untuk semua orang.
-</p>
 </section>
 
 <div class="blind">
+<img src="./jacket.png">
+<img src="./wolfparad.png">
 <img src="./blindparad.png">
+<img src="./gtrparad.jpeg">
 </div>
-
-<footer>
-<p>© 2026 PARADOX DRIFT — NOT NORMAL. NOT SLOW.</p>
-</footer>
 
 <div id="imgModal">
 <div class="nav-btn left">&#10094;</div>
@@ -191,12 +204,14 @@ Anti normal. Anti simetri. Tidak dibuat untuk semua orang.
 const loader=document.getElementById("loader");
 window.onload=()=>setTimeout(()=>loader.style.display="none",1200);
 
-const imgs=[...document.querySelectorAll(".drift-gallery img")];
+const imgs=[...document.querySelectorAll(".drift-gallery img, .blind img")];
+
 const modal=document.getElementById("imgModal");
 const modalImg=document.getElementById("modalImg");
 const title=document.getElementById("imgTitle");
 const left=document.querySelector(".left");
 const right=document.querySelector(".right");
+
 let i=0;
 
 function show(n){
@@ -207,16 +222,22 @@ modalImg.src=imgs[i].src;
 title.textContent=imgs[i].src.split("/").pop();
 }
 
-imgs.forEach((img,idx)=>img.onclick=()=>{modal.style.display="flex";show(idx)});
+imgs.forEach((img,idx)=>{
+img.addEventListener("click",function(){
+img.classList.add("click-zoom");
+setTimeout(()=>{img.classList.add("glitch");},150);
+setTimeout(()=>{
+img.classList.remove("click-zoom");
+img.classList.remove("glitch");
+modal.style.display="flex";
+show(idx);
+},400);
+});
+});
+
 left.onclick=e=>{e.stopPropagation();show(i-1)};
 right.onclick=e=>{e.stopPropagation();show(i+1)};
 modal.onclick=e=>{if(e.target===modal)modal.style.display="none"};
-
-/* BLIND CLICK TOGGLE */
-const blindImg=document.querySelector(".blind img");
-blindImg.addEventListener("click",function(){
-blindImg.classList.toggle("active");
-});
 </script>
 
 </body>

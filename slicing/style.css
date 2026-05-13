@@ -1,0 +1,22 @@
+.nav-link ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.ul-nav-link li {
+  float: left;
+}
+
+.ul-nav-link li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.ul-nav-link li a:hover{
+    background-color: white;
+}

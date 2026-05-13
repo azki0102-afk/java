@@ -13,6 +13,9 @@ console.log('age');
 let phone = "843247";
 console.log(typeof phone)
 
+let paragraphElement = "p";
+paragraphElement.textContent = "pagraph baru" = document.createElement = "p";
+document.getElementById("kosong").appendChild(paragraphElement)
 
 let sizeDrees = '50';
 sizeDrees = Number(sizeDrees);

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THUNDERBOLT DRIFT</title>
+
+  <link rel="icon" type="image/png" href="./logothunderbolt.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Orbitron", sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(.25) contrast(1.2);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #00000088 20%, #000 80%);
+      z-index: -1;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      flex-direction: column;
+    }
+
+    #loader h1 {
+      font-size: 42px;
+      color: #ff2e2e;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red, -2px 0 blue; }
+      50% { text-shadow: -2px 0 red, 2px 0 blue; }
+      100% { text-shadow: 2px 0 red, -2px 0 blue; }
+    }
+
+    nav {
+      background: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 60px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ff2e2e;
+    }
+
+    .logo-img {
+      width: 50px;
+      filter: drop-shadow(0 0 10px #ff2e2e);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #ff2e2e;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px 80px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      color: #ff2e2e;
+      letter-spacing: 6px;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      opacity: .85;
+      font-size: 18px;
+    }
+
+    .content-section {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .text h1 {
+      color: #ff2e2e;
+      letter-spacing: 4px;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .team-card {
+      width: 260px;
+      background: #111;
+      padding: 25px;
+      border: 1px solid #ff2e2e;
+      border-radius: 12px;
+      transition: .4s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px #ff2e2e;
+    }
+
+    .team-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .sponsor-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .sponsor-grid img {
+      width: 140px;
+      filter: grayscale(1);
+      opacity: .6;
+      transition: .3s;
+    }
+
+    .sponsor-grid img:hover {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid #ff2e2e;
+      margin-top: 100px;
+    }
+
+    .card {
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      backdrop-filter: blur(15px);
+      padding: 10px;
+    }
+
+    .svg {
+      height: 60px;
+      width: 60px;
+      border-radius: 100%;
+      padding: 1rem;
+    }
+
+    .text {
+      opacity: 0;
+      position: absolute;
+      transition: .3s;
+    }
+
+    .iso-pro:hover .text {
+      opacity: 1;
+      transform: translate(25px, -2px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <video autoplay muted loop class="bg-video">
+    <source src="https://cdn.coverr.co/videos/coverr-drifting-car-1572/1080p.mp4" type="video/mp4">
+  </video>
+
+  <div id="loader">
+    <h1>THUNDERBOLT DRIFT</h1>
+  </div>
+
+  <nav>
+    <img src="./ChatGPT_Image_Jan_29__2026__09_54_54_AM-removebg-preview.png" class="logo-img">
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Team</a></li>
+      <li><a href="#">Sponsors</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>THUNDERBOLT DRIFT</h1>
+    <p>STRIKE FAST. DRIFT HARD. RULE THE STREETS.</p>
+  </section>
+
+  <section class="content-section">
+    <div class="text"><h1>TEAM & DRIVERS</h1></div>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1549921296-3a6b4b6a63a5?q=80&w=800" />
+        <h3>AKIRA V</h3>
+        <p>Lead Driver — Precision Drift Specialist</p>
+      </div>
+
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1520975922323-6a32f3c9f4c6?q=80&w=800" />
+        <h3>RYO KAZE</h3>
+        <p>Technical Builder — Aero & Power Engineer</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="text"><h1>CARS</h1></div>
+    <div class="sponsor-grid">
+      <img src="./67b4f48b-97d7-4cae-a8f1-6507dd1158dd.png">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Brembo_logo.svg">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Bridgestone_logo.svg">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/HKS_logo.svg">
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 THUNDERBOLT DRIFT — UNDERGROUND MOTORSPORT</p>
+  </footer>
+
+  <script>
+    const loader = document.getElementById("loader");
+
+    window.addEventListener("load", () => {
+      setTimeout(() => loader.style.display = "none", 1500);
+    });
+  </script>
+
+</body>
+</html>

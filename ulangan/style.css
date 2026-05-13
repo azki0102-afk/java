@@ -1,0 +1,12 @@
+.body {
+  width: 20%;
+  height: 20%;
+  cursor: pointer;
+  transition: 0.3;
+}
+
+.text0 {
+  background-color: rgb(0, 0, 0);
+  text-decoration: rgb(255, 250, 250);
+}
+

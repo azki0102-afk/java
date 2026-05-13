@@ -1,0 +1,15 @@
+const box1 = document.getElementById("kotak1");
+const box2 = document.getElementById("kotak2");
+const box3 = document.getElementById("kotak3");
+
+box1.addEventListener("click", function () {
+  box1.classList.toggle("succes1");
+});
+
+box2.addEventListener("click", function () {
+  box2.classList.toggle("succes2");
+});
+
+box3.addEventListener("click", function () {
+  box3.classList.toggle("succes3");
+});
