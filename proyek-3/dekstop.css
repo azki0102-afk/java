@@ -124,7 +124,7 @@ nav {
 }
 
 .logo {
-  color: red;
+  color: rgb(238, 233, 233);
 }
 
 .za {
@@ -164,7 +164,7 @@ main {
     position: absolute;
     top: 70px;
     right: 0;
-    background: #dd1c1c;
+    background: #f7f7f7;
     flex-direction: column;
     width: 200px;
     padding: 20px;
