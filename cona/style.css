@@ -23,7 +23,7 @@ body {
   gap: 20px;
 }
 
-.card:hover {
+.card1:hover {
   transition: 0.7s;
   border-radius: 142px;
   background: #ff0000;
@@ -31,6 +31,85 @@ body {
     inset 14px 14px 13px #fc0202,
     inset -14px -14px 13px #ff0800;
 }
+
+.card2:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+.card3:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+.card4:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+.card5:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+
+.card6:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+
+.card7:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+
+.card8:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+.card9:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+
+.card#:hover {
+  transition: 0.7s;
+  border-radius: 142px;
+  background: #ff0000;
+  box-shadow:
+    inset 14px 14px 13px #fc0202,
+    inset -14px -14px 13px #ff0800;
+}
+
+
 
 .all-card div {
   width: 64px;
